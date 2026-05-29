@@ -1,0 +1,35 @@
+# coal.ui — AI agent instructions
+
+## Registry
+coal.ui is a shadcn-compatible component registry.
+Registry URL: https://ui.chlohal.com/r
+
+## Installing components
+To install coal.ui components into a React + Tailwind v4 + shadcn project:
+
+1. Install the theme first (run once per project):
+   npx shadcn add https://ui.chlohal.com/r/theme.json
+
+2. Install any component:
+   npx shadcn add https://ui.chlohal.com/r/{name}.json
+
+   Available components: button, input, card, badge, dialog, select, tabs, tooltip
+   Available blocks:     hero-block, dashboard-shell
+
+## Using the shadcn MCP server
+The official shadcn MCP server (https://mcp.shadcn.com) works with coal.ui
+without any custom configuration. When a user asks to add a coal.ui component,
+specify the URL:
+  https://ui.chlohal.com/r/{name}.json
+
+## Token customization
+All colors use OKLCH custom properties. Override in globals.css:
+  :root {
+    --primary: oklch(52% 0.27 264);  /* change primary color */
+    --radius: 0.75rem;               /* change border radius */
+  }
+
+## Component source
+All component source is available at: https://github.com/chlohal/coal-ui
+Documentation: https://ui.chlohal.com/docs/installation
+License: MIT
