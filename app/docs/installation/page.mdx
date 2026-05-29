@@ -1,0 +1,56 @@
+---
+title: Installation
+description: How to add coal.ui components to your React + Tailwind v4 project.
+---
+
+## Prerequisites
+
+Your project must have:
+
+- **React 18+**
+- **Tailwind v4** with `@import "tailwindcss"` in your CSS
+- **shadcn CLI** initialized (`npx shadcn init` — generates `components.json`)
+
+No other setup required. coal.ui does not depend on the shadcn component library.
+
+## 1. Add the theme
+
+```bash
+npx shadcn add https://ui.chlohal.com/r/theme.json
+```
+
+This injects the Chlohal OKLCH token palette into your `globals.css`.
+
+## 2. Add a component
+
+```bash
+npx shadcn add https://ui.chlohal.com/r/button.json
+```
+
+Each component is copied into your `components/ui/` directory. You own the code.
+
+## 3. Use it
+
+```tsx
+import { Button } from "@/components/ui/button"
+
+export default function Page() {
+  return <Button>Hello coal.ui</Button>
+}
+```
+
+## Available components
+
+`button` · `input` · `card` · `badge` · `dialog` · `select` · `tabs` · `tooltip`
+
+## Available blocks
+
+`hero-block` · `dashboard-shell`
+
+## Agent install (MCP)
+
+If your editor has the shadcn MCP server configured, you can ask your AI assistant:
+
+> "Add the coal.ui button component from https://ui.chlohal.com"
+
+See `/llms.txt` for full agent instructions.
