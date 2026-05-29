@@ -48,6 +48,42 @@
       "registryDependencies": ["utils"]
     },
     {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "An accessible modal dialog.",
+      "files": [{ "path": "registry/ui/dialog.tsx", "type": "registry:ui" }],
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "A dropdown selection component.",
+      "files": [{ "path": "registry/ui/select.tsx", "type": "registry:ui" }],
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Layered content panels with tab navigation.",
+      "files": [{ "path": "registry/ui/tabs.tsx", "type": "registry:ui" }],
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A floating label that appears on hover or focus.",
+      "files": [{ "path": "registry/ui/tooltip.tsx", "type": "registry:ui" }],
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["utils"]
+    },
+    {
       "name": "theme",
       "type": "registry:theme",
       "title": "Chlohal Theme",

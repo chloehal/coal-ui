@@ -1,0 +1,38 @@
+---
+title: Tabs
+description: Layered content panels activated by tab buttons.
+---
+
+## Installation
+
+```bash
+npx shadcn add https://ui.chlohal.com/r/tabs.json
+```
+
+## Usage
+
+```tsx
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+
+export default function Example() {
+  return (
+    <Tabs defaultValue="account" className="w-[400px]">
+      <TabsList>
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="password">Password</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">Account settings here.</TabsContent>
+      <TabsContent value="password">Change your password here.</TabsContent>
+    </Tabs>
+  )
+}
+```
+
+## Props
+
+| Component | Key Props | Description |
+|---|---|---|
+| `Tabs` | `value`, `onValueChange`, `defaultValue` | Root state |
+| `TabsList` | — | Tab button container |
+| `TabsTrigger` | `value`, `disabled` | Individual tab button |
+| `TabsContent` | `value` | Panel shown when matching tab is active |

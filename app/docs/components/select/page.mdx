@@ -1,0 +1,48 @@
+---
+title: Select
+description: A dropdown selection component with keyboard navigation.
+---
+
+## Installation
+
+```bash
+npx shadcn add https://ui.chlohal.com/r/select.json
+```
+
+## Usage
+
+```tsx
+import {
+  Select, SelectContent, SelectItem,
+  SelectTrigger, SelectValue,
+} from "@/components/ui/select"
+
+export default function Example() {
+  return (
+    <Select>
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="Select theme" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="light">Light</SelectItem>
+        <SelectItem value="dark">Dark</SelectItem>
+        <SelectItem value="system">System</SelectItem>
+      </SelectContent>
+    </Select>
+  )
+}
+```
+
+## Accessibility
+
+Arrow keys navigate options, `Enter`/`Space` selects, `Escape` closes. All handled by Base UI.
+
+## Props
+
+| Component | Key Props | Description |
+|---|---|---|
+| `Select` | `value`, `onValueChange`, `defaultValue`, `disabled` | Root state |
+| `SelectTrigger` | `className` | Opens the dropdown |
+| `SelectValue` | `placeholder` | Shows current selection |
+| `SelectContent` | `className` | The dropdown panel |
+| `SelectItem` | `value`, `disabled` | An option |
