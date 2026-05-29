@@ -84,6 +84,22 @@
       "registryDependencies": ["utils"]
     },
     {
+      "name": "hero-block",
+      "type": "registry:block",
+      "title": "Hero Section",
+      "description": "Marketing hero section with headline, badge, and CTA buttons.",
+      "files": [{ "path": "blocks/hero.tsx", "type": "registry:component" }],
+      "registryDependencies": ["button", "badge"]
+    },
+    {
+      "name": "dashboard-shell",
+      "type": "registry:block",
+      "title": "Dashboard Shell",
+      "description": "Full-page dashboard layout with sticky navbar, stat cards, and tab panels.",
+      "files": [{ "path": "blocks/dashboard-shell.tsx", "type": "registry:component" }],
+      "registryDependencies": ["button", "card", "badge", "tabs", "input"]
+    },
+    {
       "name": "theme",
       "type": "registry:theme",
       "title": "Chlohal Theme",
