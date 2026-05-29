@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "title": "Input",
+  "description": "A text input field.",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/input.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/registry/lib/utils\"\n\ninterface InputProps extends React.ComponentPropsWithoutRef<\"input\"> {}\n\nfunction Input({ className, type = \"text\", ...props }: InputProps) {\n  return (\n    <input\n      type={type}\n      className={cn(\n        \"flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors\",\n        \"placeholder:text-muted-foreground\",\n        \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring\",\n        \"disabled:cursor-not-allowed disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Input }\nexport type { InputProps }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

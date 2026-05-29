@@ -1,0 +1,45 @@
+---
+title: Input
+description: A text input field for single-line text entry.
+---
+
+## Installation
+
+```bash
+npx shadcn add https://ui.chlohal.com/r/input.json
+```
+
+## Usage
+
+```tsx
+import { Input } from "@/components/ui/input"
+
+export default function Example() {
+  return <Input placeholder="Email" type="email" />
+}
+```
+
+## Types
+
+```tsx
+<Input type="text" placeholder="Name" />
+<Input type="email" placeholder="you@example.com" />
+<Input type="password" placeholder="Password" />
+```
+
+## Disabled
+
+```tsx
+<Input disabled placeholder="Cannot edit" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `type` | `string` | `"text"` | HTML input type |
+| `placeholder` | `string` | — | Placeholder text |
+| `disabled` | `boolean` | `false` | Disables input |
+| `className` | `string` | — | Additional Tailwind classes |
+
+All native `<input>` attributes are supported.

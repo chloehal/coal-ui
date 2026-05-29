@@ -23,6 +23,31 @@
       "registryDependencies": ["utils"]
     },
     {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "A text input field.",
+      "files": [{ "path": "registry/ui/input.tsx", "type": "registry:ui" }],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "A content container with header, body, and footer sections.",
+      "files": [{ "path": "registry/ui/card.tsx", "type": "registry:ui" }],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "A small status label.",
+      "files": [{ "path": "registry/ui/badge.tsx", "type": "registry:ui" }],
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["utils"]
+    },
+    {
       "name": "theme",
       "type": "registry:theme",
       "title": "Chlohal Theme",
