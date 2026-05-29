@@ -6,10 +6,10 @@
   "homepage": "https://ui.chlohal.com",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "pnpm run registry:build && next build",
     "start": "next start",
     "lint": "next lint",
-    "registry:build": "npx shadcn build --output ./public/r"
+    "registry:build": "npx shadcn build registry-current.json --output ./public/r"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
