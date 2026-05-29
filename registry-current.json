@@ -14,6 +14,15 @@
       "dependencies": ["clsx", "tailwind-merge"]
     },
     {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "A versatile button component with multiple variants and sizes.",
+      "files": [{ "path": "registry/ui/button.tsx", "type": "registry:ui" }],
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["utils"]
+    },
+    {
       "name": "theme",
       "type": "registry:theme",
       "title": "Chlohal Theme",
