@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tooltip",
+  "type": "registry:ui",
   "title": "Tooltip",
   "description": "A floating label that appears on hover or focus.",
   "dependencies": [
@@ -15,6 +16,5 @@
       "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Tooltip as BaseTooltip } from \"@base-ui/react/tooltip\"\nimport { cn } from \"@/registry/lib/utils\"\n\nconst TooltipProvider = BaseTooltip.Provider\nconst Tooltip = BaseTooltip.Root\nconst TooltipTrigger = BaseTooltip.Trigger\n\nfunction TooltipContent({\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<typeof BaseTooltip.Popup>) {\n  return (\n    <BaseTooltip.Portal>\n      <BaseTooltip.Positioner>\n        <BaseTooltip.Popup\n          className={cn(\n            \"z-50 overflow-hidden rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground\",\n            \"data-[starting-style]:opacity-0 data-[starting-style]:scale-95\",\n            \"data-[ending-style]:opacity-0 data-[ending-style]:scale-95\",\n            \"transition-all duration-100\",\n            className\n          )}\n          {...props}\n        />\n      </BaseTooltip.Positioner>\n    </BaseTooltip.Portal>\n  )\n}\n\nexport { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }\n",
       "type": "registry:ui"
     }
-  ],
-  "type": "registry:ui"
+  ]
 }

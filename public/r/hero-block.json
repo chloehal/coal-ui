@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hero-block",
+  "type": "registry:block",
   "title": "Hero Section",
   "description": "Marketing hero section with headline, badge, and CTA buttons.",
   "registryDependencies": [
@@ -13,6 +14,5 @@
       "content": "import { Button } from \"@/components/ui/button\"\nimport { Badge } from \"@/components/ui/badge\"\n\nexport default function HeroBlock() {\n  return (\n    <section className=\"flex min-h-[80vh] flex-col items-center justify-center gap-8 px-6 py-20 text-center\">\n      <Badge variant=\"secondary\">Open source</Badge>\n      <div className=\"flex max-w-2xl flex-col items-center gap-4\">\n        <h1 className=\"text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl\">\n          Build your next product\n          <span className=\"text-brand\"> faster.</span>\n        </h1>\n        <p className=\"text-lg text-muted-foreground\">\n          Beautiful, accessible components you can copy into your project.\n          Open source. Customizable. Yours.\n        </p>\n      </div>\n      <div className=\"flex flex-wrap items-center justify-center gap-3\">\n        <Button size=\"lg\">Get started</Button>\n        <Button size=\"lg\" variant=\"outline\">View on GitHub</Button>\n      </div>\n    </section>\n  )\n}\n",
       "type": "registry:component"
     }
-  ],
-  "type": "registry:block"
+  ]
 }
