@@ -40,3 +40,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local verification output
+.consumer-*/
+test-results/
+playwright-report/
+
+packages/react/dist/

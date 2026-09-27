@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field",
+  "type": "registry:ui",
+  "title": "Field",
+  "description": "Composable field with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/field.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\nimport * as React from \"react\";\nimport { Field as Base } from \"@base-ui/react/field\";\nimport { cn } from \"@/lib/utils\";\nexport function Field({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Root>) {\n  return <Base.Root className={cn(\"grid gap-2\", className)} {...props} />;\n}\nexport function FieldLabel({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Label>) {\n  return (\n    <Base.Label className={cn(\"text-sm font-medium\", className)} {...props} />\n  );\n}\nexport function FieldDescription({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Description>) {\n  return (\n    <Base.Description\n      className={cn(\"text-xs text-muted-foreground\", className)}\n      {...props}\n    />\n  );\n}\nexport function FieldError({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Error>) {\n  return (\n    <Base.Error\n      className={cn(\"text-xs text-destructive\", className)}\n      {...props}\n    />\n  );\n}\nexport const FieldControl = Base.Control;\n"
+    }
+  ],
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

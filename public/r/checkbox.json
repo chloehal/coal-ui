@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "type": "registry:ui",
+  "title": "Checkbox",
+  "description": "Composable checkbox with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/checkbox.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\nimport * as React from \"react\";\nimport { Checkbox as Base } from \"@base-ui/react/checkbox\";\nimport { cn } from \"@/lib/utils\";\nexport function Checkbox({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Root>) {\n  return (\n    <Base.Root\n      className={cn(\n        \"flex size-4 items-center justify-center rounded-[4px] border border-input bg-background text-primary-foreground data-[checked]:bg-primary data-[indeterminate]:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:opacity-50 data-[disabled]:opacity-50\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\nexport function CheckboxIndicator({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Indicator>) {\n  return (\n    <Base.Indicator\n      className={cn(\"text-xs leading-none\", className)}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ],
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

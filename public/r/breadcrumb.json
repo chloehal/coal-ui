@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb",
+  "type": "registry:ui",
+  "title": "Breadcrumb",
+  "description": "Composable breadcrumb with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/breadcrumb.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nexport function Breadcrumb({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<\"nav\">) {\n  return (\n    <nav\n      aria-label=\"Breadcrumb\"\n      className={cn(\n        \"flex items-center gap-2 text-sm text-muted-foreground\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

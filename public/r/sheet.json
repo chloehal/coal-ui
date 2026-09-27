@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sheet",
+  "type": "registry:ui",
+  "title": "Sheet",
+  "description": "Composable sheet with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/sheet.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\nimport * as React from \"react\";\nimport { Dialog as BaseDialog } from \"@base-ui/react/dialog\";\nimport { cn } from \"@/lib/utils\";\nexport {\n  Dialog as Sheet,\n  DialogTrigger as SheetTrigger,\n  DialogTitle as SheetTitle,\n  DialogDescription as SheetDescription,\n  DialogClose as SheetClose,\n} from \"@/components/ui/dialog\";\nexport function SheetContent({\n  className,\n  children,\n  ...props\n}: React.ComponentPropsWithRef<typeof BaseDialog.Popup>) {\n  return (\n    <BaseDialog.Portal>\n      <BaseDialog.Backdrop className=\"fixed inset-0 z-50 bg-black/40\" />\n      <BaseDialog.Popup\n        className={cn(\n          \"fixed inset-y-0 right-0 z-50 w-[min(90vw,400px)] overflow-y-auto border-l bg-background p-6 shadow-lg\",\n          className,\n        )}\n        {...props}\n      >\n        {children}\n        <BaseDialog.Close\n          aria-label=\"Close panel\"\n          className=\"absolute right-4 top-4 rounded p-1 focus-visible:outline-2\"\n        >\n          ×\n        </BaseDialog.Close>\n      </BaseDialog.Popup>\n    </BaseDialog.Portal>\n  );\n}\n"
+    }
+  ],
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json",
+    "http://localhost:3100/r/dialog.json"
+  ]
+}

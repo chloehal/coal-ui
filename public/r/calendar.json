@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar",
+  "type": "registry:ui",
+  "title": "Calendar",
+  "description": "Composable calendar with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/calendar.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\nimport { DayPicker, type DayPickerProps } from \"react-day-picker\";\nimport { cn } from \"@/lib/utils\";\nexport function Calendar({ className, classNames, ...props }: DayPickerProps) {\n  return (\n    <DayPicker\n      showOutsideDays\n      className={cn(\"relative w-fit p-3 text-sm\", className)}\n      classNames={{\n        months: \"relative flex gap-5\",\n        month: \"space-y-3\",\n        month_caption: \"flex h-8 items-center justify-center font-medium\",\n        nav: \"absolute inset-x-0 top-0 flex justify-between\",\n        button_previous:\n          \"z-10 flex size-8 items-center justify-center rounded hover:bg-muted disabled:opacity-30\",\n        button_next:\n          \"z-10 flex size-8 items-center justify-center rounded hover:bg-muted disabled:opacity-30\",\n        chevron: \"size-4 fill-current\",\n        month_grid: \"border-collapse\",\n        weekday: \"size-8 text-[10px] font-normal text-muted-foreground\",\n        day: \"size-8 text-center\",\n        day_button:\n          \"size-8 rounded-md text-xs hover:bg-muted focus-visible:outline-2 focus-visible:outline-ring\",\n        selected:\n          \"rounded-md bg-primary text-primary-foreground [&_button:hover]:bg-primary/90\",\n        today: \"font-bold underline decoration-brand underline-offset-4\",\n        outside: \"text-muted-foreground opacity-40\",\n        disabled: \"opacity-25\",\n        range_middle: \"rounded-none bg-secondary text-secondary-foreground\",\n        hidden: \"invisible\",\n        ...classNames,\n      }}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ],
+  "dependencies": [
+    "react-day-picker@^9.11.1"
+  ],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

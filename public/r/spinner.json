@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "type": "registry:ui",
+  "title": "Spinner",
+  "description": "Composable spinner with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/spinner.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nexport function Spinner({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<\"span\">) {\n  return (\n    <span\n      role=\"status\"\n      aria-label=\"Loading\"\n      className={cn(\"inline-flex\", className)}\n      {...props}\n    >\n      <span\n        aria-hidden=\"true\"\n        className=\"size-4 animate-spin rounded-full border-2 border-current border-r-transparent\"\n      />\n    </span>\n  );\n}\n"
+    }
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

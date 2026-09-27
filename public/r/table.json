@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table",
+  "type": "registry:ui",
+  "title": "Table",
+  "description": "Composable table with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/table.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nexport function Table({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<\"table\">) {\n  return (\n    <div className=\"w-full overflow-x-auto\">\n      <table className={cn(\"w-full text-left text-sm\", className)} {...props} />\n    </div>\n  );\n}\nexport function TableHeader(props: React.ComponentPropsWithRef<\"thead\">) {\n  return <thead {...props} />;\n}\nexport function TableBody(props: React.ComponentPropsWithRef<\"tbody\">) {\n  return <tbody {...props} />;\n}\nexport function TableRow({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<\"tr\">) {\n  return (\n    <tr\n      className={cn(\n        \"border-b border-border transition-colors hover:bg-muted/50\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\nexport function TableHead({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<\"th\">) {\n  return (\n    <th\n      scope=\"col\"\n      className={cn(\"h-10 px-3 font-medium text-muted-foreground\", className)}\n      {...props}\n    />\n  );\n}\nexport function TableCell({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<\"td\">) {\n  return <td className={cn(\"p-3\", className)} {...props} />;\n}\nexport function TableCaption({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<\"caption\">) {\n  return (\n    <caption\n      className={cn(\"py-3 text-left text-sm text-muted-foreground\", className)}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

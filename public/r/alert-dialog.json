@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-dialog",
+  "type": "registry:ui",
+  "title": "Alert Dialog",
+  "description": "Composable alert dialog with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/alert-dialog.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\nimport * as React from \"react\";\nimport { AlertDialog as Base } from \"@base-ui/react/alert-dialog\";\nimport { cn } from \"@/lib/utils\";\nexport const AlertDialog = Base.Root;\nexport const AlertDialogTrigger = Base.Trigger;\nexport const AlertDialogTitle = Base.Title;\nexport const AlertDialogDescription = Base.Description;\nexport const AlertDialogClose = Base.Close;\nexport function AlertDialogContent({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Popup>) {\n  return (\n    <Base.Portal>\n      <Base.Backdrop className=\"fixed inset-0 z-50 bg-black/40\" />\n      <Base.Popup\n        className={cn(\n          \"fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-xl border bg-background p-6 shadow-lg\",\n          className,\n        )}\n        {...props}\n      />\n    </Base.Portal>\n  );\n}\n"
+    }
+  ],
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

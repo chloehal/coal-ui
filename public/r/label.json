@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label",
+  "type": "registry:ui",
+  "title": "Label",
+  "description": "Composable label with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/label.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nexport function Label({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<\"label\">) {\n  return (\n    <label\n      className={cn(\"text-sm font-medium leading-none\", className)}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

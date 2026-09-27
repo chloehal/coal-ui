@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-menu",
+  "type": "registry:ui",
+  "title": "Dropdown Menu",
+  "description": "Composable dropdown menu with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/dropdown-menu.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\nimport * as React from \"react\";\nimport { Menu as Base } from \"@base-ui/react/menu\";\nimport { cn } from \"@/lib/utils\";\nexport function DropdownMenuTrigger({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Trigger>) {\n  return (\n    <Base.Trigger\n      className={cn(\n        \"inline-flex items-center gap-2 rounded-md text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:opacity-50 data-[disabled]:opacity-50\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\nexport const DropdownMenu = Base.Root;\nexport const DropdownMenuPortal = Base.Portal;\nexport const DropdownMenuPositioner = Base.Positioner;\nexport function DropdownMenuContent({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Popup>) {\n  return (\n    <Base.Portal>\n      <Base.Positioner sideOffset={6} className=\"z-50\">\n        <Base.Popup\n          className={cn(\n            \"min-w-44 rounded-lg border border-border bg-popover p-2 text-sm text-popover-foreground shadow-lg outline-none\",\n            className,\n          )}\n          {...props}\n        />\n      </Base.Positioner>\n    </Base.Portal>\n  );\n}\nexport function DropdownMenuItem({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Item>) {\n  return (\n    <Base.Item\n      className={cn(\n        \"cursor-default rounded px-2 py-1.5 outline-none data-[highlighted]:bg-muted data-[disabled]:opacity-50\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\nexport const DropdownMenuSeparator = Base.Separator;\nexport const DropdownMenuGroup = Base.Group;\nexport const DropdownMenuGroupLabel = Base.GroupLabel;\n"
+    }
+  ],
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

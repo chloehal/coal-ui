@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-area",
+  "type": "registry:ui",
+  "title": "Scroll Area",
+  "description": "Composable scroll area with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/scroll-area.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\nimport * as React from \"react\";\nimport { ScrollArea as Base } from \"@base-ui/react/scroll-area\";\nimport { cn } from \"@/lib/utils\";\nexport function ScrollArea({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Root>) {\n  return (\n    <Base.Root\n      className={cn(\"relative overflow-hidden\", className)}\n      {...props}\n    />\n  );\n}\nexport function ScrollAreaViewport({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Viewport>) {\n  return (\n    <Base.Viewport\n      className={cn(\n        \"size-full overscroll-contain focus-visible:outline-2 focus-visible:outline-ring\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\nexport function ScrollAreaScrollbar({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Scrollbar>) {\n  return (\n    <Base.Scrollbar\n      className={cn(\"m-1 flex w-1.5 rounded bg-muted\", className)}\n      {...props}\n    />\n  );\n}\nexport function ScrollAreaThumb({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Thumb>) {\n  return (\n    <Base.Thumb\n      className={cn(\"w-full rounded bg-muted-foreground/40\", className)}\n      {...props}\n    />\n  );\n}\nexport const ScrollAreaContent = Base.Content;\n"
+    }
+  ],
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

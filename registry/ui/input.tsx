@@ -1,7 +1,7 @@
-import * as React from "react"
-import { cn } from "@/registry/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
-type InputProps = React.ComponentPropsWithoutRef<"input">
+type InputProps = React.ComponentPropsWithRef<"input">;
 
 function Input({ className, type = "text", ...props }: InputProps) {
   return (
@@ -12,12 +12,12 @@ function Input({ className, type = "text", ...props }: InputProps) {
         "placeholder:text-muted-foreground",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         "disabled:cursor-not-allowed disabled:opacity-50",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-export { Input }
-export type { InputProps }
+export { Input };
+export type { InputProps };

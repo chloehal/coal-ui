@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "type": "registry:ui",
+  "title": "Collapsible",
+  "description": "Composable collapsible with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/collapsible.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\nimport * as React from \"react\";\nimport { Collapsible as Base } from \"@base-ui/react/collapsible\";\nimport { cn } from \"@/lib/utils\";\nexport function CollapsibleContent({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Panel>) {\n  return (\n    <Base.Panel\n      className={cn(\"py-3 text-sm text-muted-foreground\", className)}\n      {...props}\n    />\n  );\n}\nexport const Collapsible = Base.Root;\nexport const CollapsibleTrigger = Base.Trigger;\n"
+    }
+  ],
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

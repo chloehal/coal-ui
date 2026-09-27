@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "combobox",
+  "type": "registry:ui",
+  "title": "Combobox",
+  "description": "Composable combobox with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/combobox.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\nimport * as React from \"react\";\nimport { Combobox as Base } from \"@base-ui/react/combobox\";\nimport { cn } from \"@/lib/utils\";\nexport const Combobox = Base.Root;\nexport const ComboboxLabel = Base.Label;\nexport const ComboboxList = Base.List;\nexport const ComboboxValue = Base.Value;\nexport const ComboboxChips = Base.Chips;\nexport const ComboboxChip = Base.Chip;\nexport const ComboboxChipRemove = Base.ChipRemove;\nexport function ComboboxInput({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Input>) {\n  return (\n    <Base.Input\n      className={cn(\n        \"h-9 w-full rounded-md border border-input bg-background px-3 text-sm focus-visible:outline-2 focus-visible:outline-ring disabled:opacity-50\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\nexport function ComboboxContent({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Popup>) {\n  return (\n    <Base.Portal>\n      <Base.Positioner sideOffset={6} className=\"z-50\">\n        <Base.Popup\n          className={cn(\n            \"max-h-64 w-[var(--anchor-width)] min-w-48 overflow-auto rounded-lg border bg-popover p-1 text-popover-foreground shadow-lg\",\n            className,\n          )}\n          {...props}\n        />\n      </Base.Positioner>\n    </Base.Portal>\n  );\n}\nexport function ComboboxItem({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Item>) {\n  return (\n    <Base.Item\n      className={cn(\n        \"cursor-default rounded px-3 py-2 text-sm outline-none data-[highlighted]:bg-muted data-[selected]:font-medium data-[disabled]:opacity-50\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\nexport function ComboboxEmpty({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Empty>) {\n  return (\n    <Base.Empty\n      className={cn(\n        \"p-3 text-sm text-muted-foreground empty:hidden\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ],
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

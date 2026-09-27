@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group",
+  "type": "registry:ui",
+  "title": "Button Group",
+  "description": "Composable button group with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/button-group.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nexport function ButtonGroup({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<\"div\">) {\n  return (\n    <div\n      role=\"group\"\n      className={cn(\n        \"inline-flex items-center gap-1 rounded-lg border bg-card p-1\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator",
+  "type": "registry:ui",
+  "title": "Separator",
+  "description": "Composable separator with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/separator.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nexport function Separator({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<\"hr\">) {\n  return (\n    <hr\n      className={cn(\"w-full border-0 border-t border-border\", className)}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}
