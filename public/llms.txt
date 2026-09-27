@@ -1,35 +1,71 @@
-# coal.ui — AI agent instructions
+# coal.ui
 
-## Registry
-coal.ui is a shadcn-compatible component registry.
-Registry URL: https://ui.chlohal.com/r
+55 original React 19 components. Install @chlohal/coal-ui from the local archive /downloads/chlohal-coal-ui-0.5.0.tgz and import @chlohal/coal-ui/styles.css. React and ReactDOM are the only peers; no external UI library or Tailwind is required. The package is not yet published to npm.
 
-## Installing components
-To install coal.ui components into a React + Tailwind v4 + shadcn project:
+## Documentation
+- /docs/foundations (motion, local optional Plex fonts, semantic intents and usage rules)
+- /docs/installation
+- /docs/theming
+- /docs/coverage (reference library comparison and explicit advanced omissions)
 
-1. Install the theme first (run once per project):
-   npx shadcn add https://ui.chlohal.com/r/theme.json
+## Components
+- Button: /docs/components/button
+- Input: /docs/components/input
+- Card: /docs/components/card
+- Badge: /docs/components/badge
+- Dialog: /docs/components/dialog
+- Select: /docs/components/select
+- Tabs: /docs/components/tabs
+- Tooltip: /docs/components/tooltip
+- Accordion: /docs/components/accordion
+- Alert: /docs/components/alert
+- Avatar: /docs/components/avatar
+- Breadcrumb: /docs/components/breadcrumb
+- Button Group: /docs/components/button-group
+- Checkbox: /docs/components/checkbox
+- Collapsible: /docs/components/collapsible
+- Dropdown Menu: /docs/components/dropdown-menu
+- Empty: /docs/components/empty
+- Field: /docs/components/field
+- Hover Card: /docs/components/hover-card
+- Kbd: /docs/components/kbd
+- Label: /docs/components/label
+- Number Field: /docs/components/number-field
+- Popover: /docs/components/popover
+- Progress: /docs/components/progress
+- Radio Group: /docs/components/radio-group
+- Scroll Area: /docs/components/scroll-area
+- Separator: /docs/components/separator
+- Sheet: /docs/components/sheet
+- Skeleton: /docs/components/skeleton
+- Slider: /docs/components/slider
+- Spinner: /docs/components/spinner
+- Switch: /docs/components/switch
+- Table: /docs/components/table
+- Textarea: /docs/components/textarea
+- Toggle: /docs/components/toggle
+- Alert Dialog: /docs/components/alert-dialog
+- Aspect Ratio: /docs/components/aspect-ratio
+- Calendar: /docs/components/calendar
+- Combobox: /docs/components/combobox
+- Date Picker: /docs/components/date-picker
+- Native Select: /docs/components/native-select
+- Pagination: /docs/components/pagination
+- Toast: /docs/components/toast
 
-2. Install any component:
-   npx shadcn add https://ui.chlohal.com/r/{name}.json
+- Data Table: /docs/components/data-table
+- Command: /docs/components/command
+- Input Group: /docs/components/input-group
+- Chip: /docs/components/chip
+- Toggle Group: /docs/components/toggle-group
+- Steps: /docs/components/steps
+- Timeline: /docs/components/timeline
+- Copyable Value: /docs/components/copyable-value
+- Time Picker: /docs/components/time-picker
+- Color Picker: /docs/components/color-picker
+- Attachment: /docs/components/attachment
+- Action Bar: /docs/components/action-bar
 
-   Available components: button, input, card, badge, dialog, select, tabs, tooltip
-   Available blocks:     hero-block, dashboard-shell
-
-## Using the shadcn MCP server
-The official shadcn MCP server (https://mcp.shadcn.com) works with coal.ui
-without any custom configuration. When a user asks to add a coal.ui component,
-specify the URL:
-  https://ui.chlohal.com/r/{name}.json
-
-## Token customization
-All colors use OKLCH custom properties. Override in globals.css:
-  :root {
-    --primary: oklch(52% 0.27 264);  /* change primary color */
-    --radius: 0.75rem;               /* change border radius */
-  }
-
-## Component source
-All component source is available at: https://github.com/chlohal/coal-ui
-Documentation: https://ui.chlohal.com/docs/installation
-License: MIT
+## Local development
+Use npm ci, npm run package:build, npm run dev -- --port 3100.
+Local origin: http://localhost:3100. The Next.js site is documentation only. Package sources live in packages/react/src. npm run build creates the installable archive and site. This revision is local, not published automatically.

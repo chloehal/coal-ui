@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "type": "registry:ui",
+  "title": "Textarea",
+  "description": "Composable textarea with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/textarea.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nexport function Textarea({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<\"textarea\">) {\n  return (\n    <textarea\n      className={cn(\n        \"min-h-24 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-2 focus-visible:outline-ring disabled:opacity-50\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

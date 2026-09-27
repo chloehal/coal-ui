@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-field",
+  "type": "registry:ui",
+  "title": "Number Field",
+  "description": "Composable number field with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/number-field.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\nimport * as React from \"react\";\nimport { NumberField as Base } from \"@base-ui/react/number-field\";\nimport { cn } from \"@/lib/utils\";\nexport function NumberField({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Root>) {\n  return <Base.Root className={cn(\"grid gap-2\", className)} {...props} />;\n}\nexport function NumberFieldGroup({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Group>) {\n  return (\n    <Base.Group\n      className={cn(\n        \"flex overflow-hidden rounded-md border border-input\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\nexport function NumberFieldInput({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Input>) {\n  return (\n    <Base.Input\n      className={cn(\n        \"h-9 w-16 bg-transparent text-center text-sm outline-none focus:bg-muted\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\nexport function NumberFieldIncrement({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Increment>) {\n  return (\n    <Base.Increment\n      className={cn(\n        \"w-9 hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:opacity-50 data-[disabled]:opacity-50\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\nexport function NumberFieldDecrement({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Decrement>) {\n  return (\n    <Base.Decrement\n      className={cn(\n        \"w-9 hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:opacity-50 data-[disabled]:opacity-50\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ],
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

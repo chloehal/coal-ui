@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert",
+  "type": "registry:ui",
+  "title": "Alert",
+  "description": "Composable alert with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/alert.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nexport function Alert({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<\"div\">) {\n  return (\n    <div\n      role=\"status\"\n      className={cn(\n        \"relative rounded-lg border border-border border-l-2 border-l-brand bg-card p-4 text-sm\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

@@ -1,0 +1,8 @@
+import * as React from "react";
+export function AspectRatio({
+  ratio = 16 / 9,
+  style,
+  ...props
+}: React.ComponentPropsWithRef<"div"> & { ratio?: number }) {
+  return <div style={{ aspectRatio: ratio, ...style }} {...props} />;
+}

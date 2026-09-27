@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd",
+  "type": "registry:ui",
+  "title": "Kbd",
+  "description": "Composable kbd with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/kbd.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nexport function Kbd({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<\"kbd\">) {\n  return (\n    <kbd\n      className={cn(\n        \"inline-flex min-w-5 items-center justify-center rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[11px] text-muted-foreground\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

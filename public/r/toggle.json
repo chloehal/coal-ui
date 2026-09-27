@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle",
+  "type": "registry:ui",
+  "title": "Toggle",
+  "description": "Composable toggle with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/toggle.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\nimport * as React from \"react\";\nimport { Toggle as BaseToggle } from \"@base-ui/react/toggle\";\nimport { cn } from \"@/lib/utils\";\nexport function Toggle({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof BaseToggle>) {\n  return (\n    <BaseToggle\n      className={cn(\n        \"inline-flex size-9 items-center justify-center rounded-md border border-transparent text-sm hover:bg-muted data-[pressed]:border-border data-[pressed]:bg-secondary focus-visible:outline-2 focus-visible:outline-ring disabled:opacity-50\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ],
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

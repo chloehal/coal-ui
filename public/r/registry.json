@@ -9,95 +9,17 @@
       "title": "Utils",
       "description": "The cn() utility used by all coal.ui components.",
       "files": [
-        { "path": "registry/lib/utils.ts", "type": "registry:lib" }
+        {
+          "path": "registry/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "lib/utils.ts"
+        }
       ],
-      "dependencies": ["clsx", "tailwind-merge"]
-    },
-    {
-      "name": "button",
-      "type": "registry:ui",
-      "title": "Button",
-      "description": "A versatile button component with multiple variants and sizes.",
-      "files": [{ "path": "registry/ui/button.tsx", "type": "registry:ui" }],
-      "dependencies": ["@base-ui/react", "class-variance-authority"],
-      "registryDependencies": ["utils"]
-    },
-    {
-      "name": "input",
-      "type": "registry:ui",
-      "title": "Input",
-      "description": "A text input field.",
-      "files": [{ "path": "registry/ui/input.tsx", "type": "registry:ui" }],
-      "registryDependencies": ["utils"]
-    },
-    {
-      "name": "card",
-      "type": "registry:ui",
-      "title": "Card",
-      "description": "A content container with header, body, and footer sections.",
-      "files": [{ "path": "registry/ui/card.tsx", "type": "registry:ui" }],
-      "registryDependencies": ["utils"]
-    },
-    {
-      "name": "badge",
-      "type": "registry:ui",
-      "title": "Badge",
-      "description": "A small status label.",
-      "files": [{ "path": "registry/ui/badge.tsx", "type": "registry:ui" }],
-      "dependencies": ["class-variance-authority"],
-      "registryDependencies": ["utils"]
-    },
-    {
-      "name": "dialog",
-      "type": "registry:ui",
-      "title": "Dialog",
-      "description": "An accessible modal dialog.",
-      "files": [{ "path": "registry/ui/dialog.tsx", "type": "registry:ui" }],
-      "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["utils"]
-    },
-    {
-      "name": "select",
-      "type": "registry:ui",
-      "title": "Select",
-      "description": "A dropdown selection component.",
-      "files": [{ "path": "registry/ui/select.tsx", "type": "registry:ui" }],
-      "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["utils"]
-    },
-    {
-      "name": "tabs",
-      "type": "registry:ui",
-      "title": "Tabs",
-      "description": "Layered content panels with tab navigation.",
-      "files": [{ "path": "registry/ui/tabs.tsx", "type": "registry:ui" }],
-      "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["utils"]
-    },
-    {
-      "name": "tooltip",
-      "type": "registry:ui",
-      "title": "Tooltip",
-      "description": "A floating label that appears on hover or focus.",
-      "files": [{ "path": "registry/ui/tooltip.tsx", "type": "registry:ui" }],
-      "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["utils"]
-    },
-    {
-      "name": "hero-block",
-      "type": "registry:block",
-      "title": "Hero Section",
-      "description": "Marketing hero section with headline, badge, and CTA buttons.",
-      "files": [{ "path": "blocks/hero.tsx", "type": "registry:component" }],
-      "registryDependencies": ["button", "badge"]
-    },
-    {
-      "name": "dashboard-shell",
-      "type": "registry:block",
-      "title": "Dashboard Shell",
-      "description": "Full-page dashboard layout with sticky navbar, stat cards, and tab panels.",
-      "files": [{ "path": "blocks/dashboard-shell.tsx", "type": "registry:component" }],
-      "registryDependencies": ["button", "card", "badge", "tabs", "input"]
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": []
     },
     {
       "name": "theme",
@@ -106,49 +28,878 @@
       "description": "Chlohal signature theme — warm OKLCH neutrals, dark mode, brand amber.",
       "cssVars": {
         "light": {
-          "background":             "oklch(99.0% 0.004 75)",
-          "foreground":             "oklch(14.0% 0.010 75)",
-          "card":                   "oklch(99.0% 0.004 75)",
-          "card-foreground":        "oklch(14.0% 0.010 75)",
-          "popover":                "oklch(99.0% 0.004 75)",
-          "popover-foreground":     "oklch(14.0% 0.010 75)",
-          "primary":                "oklch(22.0% 0.012 75)",
-          "primary-foreground":     "oklch(98.0% 0.003 75)",
-          "secondary":              "oklch(93.5% 0.008 75)",
-          "secondary-foreground":   "oklch(22.0% 0.012 75)",
-          "muted":                  "oklch(93.5% 0.008 75)",
-          "muted-foreground":       "oklch(48.0% 0.014 75)",
-          "accent":                 "oklch(93.5% 0.008 75)",
-          "accent-foreground":      "oklch(22.0% 0.012 75)",
-          "destructive":            "oklch(55.0% 0.240 29)",
+          "background": "oklch(99.0% 0.004 75)",
+          "foreground": "oklch(14.0% 0.010 75)",
+          "card": "oklch(99.0% 0.004 75)",
+          "card-foreground": "oklch(14.0% 0.010 75)",
+          "popover": "oklch(99.0% 0.004 75)",
+          "popover-foreground": "oklch(14.0% 0.010 75)",
+          "primary": "oklch(22.0% 0.012 75)",
+          "primary-foreground": "oklch(98.0% 0.003 75)",
+          "secondary": "oklch(93.5% 0.008 75)",
+          "secondary-foreground": "oklch(22.0% 0.012 75)",
+          "muted": "oklch(93.5% 0.008 75)",
+          "muted-foreground": "oklch(48.0% 0.014 75)",
+          "accent": "oklch(93.5% 0.008 75)",
+          "accent-foreground": "oklch(22.0% 0.012 75)",
+          "destructive": "oklch(55.0% 0.240 29)",
           "destructive-foreground": "oklch(98.0% 0.003 0)",
-          "border":                 "oklch(87.5% 0.010 75)",
-          "input":                  "oklch(87.5% 0.010 75)",
-          "ring":                   "oklch(22.0% 0.012 75)",
-          "radius":                 "0.5rem"
+          "border": "oklch(87.5% 0.010 75)",
+          "input": "oklch(87.5% 0.010 75)",
+          "ring": "oklch(22.0% 0.012 75)",
+          "brand": "oklch(68.0% 0.200 55)",
+          "brand-foreground": "oklch(14.0% 0.010 75)",
+          "radius": "0.5rem"
         },
         "dark": {
-          "background":             "oklch(12.0% 0.010 75)",
-          "foreground":             "oklch(95.0% 0.004 75)",
-          "card":                   "oklch(15.0% 0.010 75)",
-          "card-foreground":        "oklch(95.0% 0.004 75)",
-          "popover":                "oklch(15.0% 0.010 75)",
-          "popover-foreground":     "oklch(95.0% 0.004 75)",
-          "primary":                "oklch(92.0% 0.005 75)",
-          "primary-foreground":     "oklch(14.0% 0.010 75)",
-          "secondary":              "oklch(21.0% 0.012 75)",
-          "secondary-foreground":   "oklch(92.0% 0.005 75)",
-          "muted":                  "oklch(21.0% 0.012 75)",
-          "muted-foreground":       "oklch(63.0% 0.014 75)",
-          "accent":                 "oklch(21.0% 0.012 75)",
-          "accent-foreground":      "oklch(92.0% 0.005 75)",
-          "destructive":            "oklch(45.0% 0.200 29)",
+          "background": "oklch(12.0% 0.010 75)",
+          "foreground": "oklch(95.0% 0.004 75)",
+          "card": "oklch(15.0% 0.010 75)",
+          "card-foreground": "oklch(95.0% 0.004 75)",
+          "popover": "oklch(15.0% 0.010 75)",
+          "popover-foreground": "oklch(95.0% 0.004 75)",
+          "primary": "oklch(92.0% 0.005 75)",
+          "primary-foreground": "oklch(14.0% 0.010 75)",
+          "secondary": "oklch(21.0% 0.012 75)",
+          "secondary-foreground": "oklch(92.0% 0.005 75)",
+          "muted": "oklch(21.0% 0.012 75)",
+          "muted-foreground": "oklch(63.0% 0.014 75)",
+          "accent": "oklch(21.0% 0.012 75)",
+          "accent-foreground": "oklch(92.0% 0.005 75)",
+          "destructive": "oklch(45.0% 0.200 29)",
           "destructive-foreground": "oklch(98.0% 0.003 0)",
-          "border":                 "oklch(22.0% 0.014 75)",
-          "input":                  "oklch(22.0% 0.014 75)",
-          "ring":                   "oklch(75.0% 0.010 75)"
+          "border": "oklch(22.0% 0.014 75)",
+          "input": "oklch(22.0% 0.014 75)",
+          "ring": "oklch(75.0% 0.010 75)",
+          "brand": "oklch(72.0% 0.200 55)",
+          "brand-foreground": "oklch(14.0% 0.010 75)"
         }
-      }
+      },
+      "registryDependencies": []
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "A versatile button component with multiple variants and sizes.",
+      "files": [
+        {
+          "path": "registry/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "A text input field.",
+      "files": [
+        {
+          "path": "registry/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ],
+      "dependencies": []
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "A content container with header, body, and footer sections.",
+      "files": [
+        {
+          "path": "registry/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ],
+      "dependencies": []
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "A small status label.",
+      "files": [
+        {
+          "path": "registry/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "An accessible modal dialog.",
+      "files": [
+        {
+          "path": "registry/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "A dropdown selection component.",
+      "files": [
+        {
+          "path": "registry/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Layered content panels with tab navigation.",
+      "files": [
+        {
+          "path": "registry/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A floating label that appears on hover or focus.",
+      "files": [
+        {
+          "path": "registry/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "hero-block",
+      "type": "registry:block",
+      "title": "Hero Section",
+      "description": "Marketing hero section with headline, badge, and CTA buttons.",
+      "files": [
+        {
+          "path": "blocks/hero.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/button.json",
+        "https://ui.chlohal.com/r/badge.json"
+      ]
+    },
+    {
+      "name": "dashboard-shell",
+      "type": "registry:block",
+      "title": "Dashboard Shell",
+      "description": "Full-page dashboard layout with sticky navbar, stat cards, and tab panels.",
+      "files": [
+        {
+          "path": "blocks/dashboard-shell.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/dashboard-shell.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/button.json",
+        "https://ui.chlohal.com/r/card.json",
+        "https://ui.chlohal.com/r/badge.json",
+        "https://ui.chlohal.com/r/tabs.json",
+        "https://ui.chlohal.com/r/input.json"
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Composable accordion with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Composable alert with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Composable avatar with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Composable breadcrumb with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Button Group",
+      "description": "Composable button group with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Composable checkbox with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "Composable collapsible with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Composable dropdown menu with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "Composable empty with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Composable field with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "Composable hover card with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Composable kbd with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Composable label with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "number-field",
+      "type": "registry:ui",
+      "title": "Number Field",
+      "description": "Composable number field with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/number-field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Composable popover with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Composable progress with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "Composable radio group with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "Composable scroll area with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Composable separator with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Composable sheet with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json",
+        "https://ui.chlohal.com/r/dialog.json"
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Composable skeleton with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Composable slider with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "Composable spinner with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Composable switch with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Composable table with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Composable textarea with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "Composable toggle with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "Composable alert dialog with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "description": "Composable aspect ratio with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "Composable calendar with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "react-day-picker@^9.11.1"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "Composable combobox with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker",
+      "description": "Composable date picker with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json",
+        "https://ui.chlohal.com/r/calendar.json",
+        "https://ui.chlohal.com/r/popover.json",
+        "https://ui.chlohal.com/r/button.json"
+      ]
+    },
+    {
+      "name": "native-select",
+      "type": "registry:ui",
+      "title": "Native Select",
+      "description": "Composable native select with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/native-select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Composable pagination with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json",
+        "https://ui.chlohal.com/r/button.json"
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Composable toast with the coal.ui theme.",
+      "files": [
+        {
+          "path": "registry/ui/toast.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://ui.chlohal.com/r/utils.json",
+        "https://ui.chlohal.com/r/theme.json"
+      ]
     }
   ]
 }

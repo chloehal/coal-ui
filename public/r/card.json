@@ -4,14 +4,16 @@
   "type": "registry:ui",
   "title": "Card",
   "description": "A content container with header, body, and footer sections.",
-  "registryDependencies": [
-    "utils"
-  ],
   "files": [
     {
       "path": "registry/ui/card.tsx",
-      "content": "import * as React from \"react\"\nimport { cn } from \"@/registry/lib/utils\"\n\nfunction Card({ className, ...props }: React.ComponentPropsWithoutRef<\"div\">) {\n  return (\n    <div\n      className={cn(\"rounded-xl border bg-card text-card-foreground shadow\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardHeader({ className, ...props }: React.ComponentPropsWithoutRef<\"div\">) {\n  return (\n    <div className={cn(\"flex flex-col space-y-1.5 p-6\", className)} {...props} />\n  )\n}\n\nfunction CardTitle({ className, ...props }: React.ComponentPropsWithoutRef<\"div\">) {\n  return (\n    <div\n      className={cn(\"font-semibold leading-none tracking-tight\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardDescription({ className, ...props }: React.ComponentPropsWithoutRef<\"div\">) {\n  return (\n    <div className={cn(\"text-sm text-muted-foreground\", className)} {...props} />\n  )\n}\n\nfunction CardContent({ className, ...props }: React.ComponentPropsWithoutRef<\"div\">) {\n  return <div className={cn(\"p-6 pt-0\", className)} {...props} />\n}\n\nfunction CardFooter({ className, ...props }: React.ComponentPropsWithoutRef<\"div\">) {\n  return (\n    <div className={cn(\"flex items-center p-6 pt-0\", className)} {...props} />\n  )\n}\n\nexport { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }\n",
-      "type": "registry:ui"
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nfunction Card({ className, ...props }: React.ComponentPropsWithRef<\"div\">) {\n  return (\n    <div\n      className={cn(\n        \"rounded-xl border bg-card text-card-foreground shadow\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction CardHeader({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<\"div\">) {\n  return (\n    <div\n      className={cn(\"flex flex-col space-y-1.5 p-6\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction CardTitle({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<\"div\">) {\n  return (\n    <div\n      className={cn(\"font-semibold leading-none tracking-tight\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction CardDescription({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<\"div\">) {\n  return (\n    <div\n      className={cn(\"text-sm text-muted-foreground\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction CardContent({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<\"div\">) {\n  return <div className={cn(\"p-6 pt-0\", className)} {...props} />;\n}\n\nfunction CardFooter({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<\"div\">) {\n  return (\n    <div className={cn(\"flex items-center p-6 pt-0\", className)} {...props} />\n  );\n}\n\nexport {\n  Card,\n  CardHeader,\n  CardFooter,\n  CardTitle,\n  CardDescription,\n  CardContent,\n};\n"
     }
-  ]
+  ],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ],
+  "dependencies": []
 }

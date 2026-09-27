@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover",
+  "type": "registry:ui",
+  "title": "Popover",
+  "description": "Composable popover with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/popover.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\nimport * as React from \"react\";\nimport { Popover as Base } from \"@base-ui/react/popover\";\nimport { cn } from \"@/lib/utils\";\nexport function PopoverTrigger({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Trigger>) {\n  return (\n    <Base.Trigger\n      className={cn(\n        \"inline-flex items-center gap-2 rounded-md text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:opacity-50 data-[disabled]:opacity-50\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\nexport const Popover = Base.Root;\nexport const PopoverPortal = Base.Portal;\nexport const PopoverPositioner = Base.Positioner;\nexport function PopoverContent({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof Base.Popup>) {\n  return (\n    <Base.Portal>\n      <Base.Positioner sideOffset={6} className=\"z-50\">\n        <Base.Popup\n          className={cn(\n            \"min-w-44 rounded-lg border border-border bg-popover p-2 text-sm text-popover-foreground shadow-lg outline-none\",\n            className,\n          )}\n          {...props}\n        />\n      </Base.Positioner>\n    </Base.Portal>\n  );\n}\nexport const PopoverTitle = Base.Title;\nexport const PopoverDescription = Base.Description;\nexport const PopoverClose = Base.Close;\n"
+    }
+  ],
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

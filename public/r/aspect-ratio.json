@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aspect-ratio",
+  "type": "registry:ui",
+  "title": "Aspect Ratio",
+  "description": "Composable aspect ratio with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/aspect-ratio.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nexport function AspectRatio({\n  ratio = 16 / 9,\n  style,\n  ...props\n}: React.ComponentPropsWithRef<\"div\"> & { ratio?: number }) {\n  return <div style={{ aspectRatio: ratio, ...style }} {...props} />;\n}\n"
+    }
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}

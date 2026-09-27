@@ -10,7 +10,9 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  { ignores: [".next/**", "node_modules/**", "packages/react/dist/**", "registry/**", "next-env.d.ts", "test-results/**", "public/package-smoke/**"] },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {files:["packages/react/src/**/*.tsx"], rules:{"@next/next/no-img-element":"off"}},
 ];
 
 export default eslintConfig;

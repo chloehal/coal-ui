@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-picker",
+  "type": "registry:ui",
+  "title": "Date Picker",
+  "description": "Composable date picker with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/date-picker.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\nimport * as React from \"react\";\nimport { Calendar } from \"@/components/ui/calendar\";\nimport {\n  Popover,\n  PopoverTrigger,\n  PopoverContent,\n} from \"@/components/ui/popover\";\nimport { Button } from \"@/components/ui/button\";\nexport type DatePickerProps = {\n  value?: Date;\n  onValueChange: (date: Date | undefined) => void;\n  label?: string;\n  disabled?: boolean;\n  locale?: string;\n};\nexport function DatePicker({\n  value,\n  onValueChange,\n  label = \"Choose a date\",\n  disabled,\n  locale = \"en-GB\",\n}: DatePickerProps) {\n  const [open, setOpen] = React.useState(false);\n  return (\n    <Popover open={open} onOpenChange={setOpen}>\n      <PopoverTrigger\n        disabled={disabled}\n        render={<Button variant=\"outline\" />}\n        aria-label={\n          value ? `${label}: ${value.toLocaleDateString(locale)}` : label\n        }\n      >\n        {value\n          ? value.toLocaleDateString(locale, {\n              day: \"numeric\",\n              month: \"short\",\n              year: \"numeric\",\n            })\n          : label}\n        <span aria-hidden=\"true\">⌄</span>\n      </PopoverTrigger>\n      <PopoverContent className=\"p-0\">\n        <Calendar\n          mode=\"single\"\n          selected={value}\n          defaultMonth={value}\n          onSelect={(date) => {\n            onValueChange(date);\n            setOpen(false);\n          }}\n          autoFocus\n        />\n      </PopoverContent>\n    </Popover>\n  );\n}\n"
+    }
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json",
+    "http://localhost:3100/r/calendar.json",
+    "http://localhost:3100/r/popover.json",
+    "http://localhost:3100/r/button.json"
+  ]
+}

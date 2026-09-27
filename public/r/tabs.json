@@ -4,17 +4,18 @@
   "type": "registry:ui",
   "title": "Tabs",
   "description": "Layered content panels with tab navigation.",
+  "files": [
+    {
+      "path": "registry/ui/tabs.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Tabs as BaseTabs } from \"@base-ui/react/tabs\";\nimport { cn } from \"@/lib/utils\";\n\nconst Tabs = BaseTabs.Root;\n\nfunction TabsList({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof BaseTabs.List>) {\n  return (\n    <BaseTabs.List\n      className={cn(\n        \"inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction TabsTrigger({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof BaseTabs.Tab>) {\n  return (\n    <BaseTabs.Tab\n      className={cn(\n        \"inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all\",\n        \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\",\n        \"disabled:pointer-events-none disabled:opacity-50\",\n        \"data-[selected]:bg-background data-[selected]:text-foreground data-[selected]:shadow\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction TabsContent({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof BaseTabs.Panel>) {\n  return (\n    <BaseTabs.Panel\n      className={cn(\n        \"mt-2 ring-offset-background\",\n        \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport { Tabs, TabsList, TabsTrigger, TabsContent };\n"
+    }
+  ],
   "dependencies": [
     "@base-ui/react"
   ],
   "registryDependencies": [
-    "utils"
-  ],
-  "files": [
-    {
-      "path": "registry/ui/tabs.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Tabs as BaseTabs } from \"@base-ui/react/tabs\"\nimport { cn } from \"@/registry/lib/utils\"\n\nconst Tabs = BaseTabs.Root\n\nfunction TabsList({\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<typeof BaseTabs.List>) {\n  return (\n    <BaseTabs.List\n      className={cn(\n        \"inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction TabsTrigger({\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<typeof BaseTabs.Tab>) {\n  return (\n    <BaseTabs.Tab\n      className={cn(\n        \"inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all\",\n        \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\",\n        \"disabled:pointer-events-none disabled:opacity-50\",\n        \"data-[selected]:bg-background data-[selected]:text-foreground data-[selected]:shadow\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction TabsContent({\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<typeof BaseTabs.Panel>) {\n  return (\n    <BaseTabs.Panel\n      className={cn(\n        \"mt-2 ring-offset-background\",\n        \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Tabs, TabsList, TabsTrigger, TabsContent }\n",
-      "type": "registry:ui"
-    }
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
   ]
 }

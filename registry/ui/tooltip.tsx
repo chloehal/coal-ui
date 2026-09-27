@@ -1,33 +1,33 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Tooltip as BaseTooltip } from "@base-ui/react/tooltip"
-import { cn } from "@/registry/lib/utils"
+import * as React from "react";
+import { Tooltip as BaseTooltip } from "@base-ui/react/tooltip";
+import { cn } from "@/lib/utils";
 
-const TooltipProvider = BaseTooltip.Provider
-const Tooltip = BaseTooltip.Root
-const TooltipTrigger = BaseTooltip.Trigger
+const TooltipProvider = BaseTooltip.Provider;
+const Tooltip = BaseTooltip.Root;
+const TooltipTrigger = BaseTooltip.Trigger;
 
 function TooltipContent({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof BaseTooltip.Popup>) {
+}: React.ComponentPropsWithRef<typeof BaseTooltip.Popup>) {
   return (
     <BaseTooltip.Portal>
-      <BaseTooltip.Positioner>
+      <BaseTooltip.Positioner className="z-50" sideOffset={6}>
         <BaseTooltip.Popup
           className={cn(
             "z-50 overflow-hidden rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground",
             "data-[starting-style]:opacity-0 data-[starting-style]:scale-95",
             "data-[ending-style]:opacity-0 data-[ending-style]:scale-95",
             "transition-all duration-100",
-            className
+            className,
           )}
           {...props}
         />
       </BaseTooltip.Positioner>
     </BaseTooltip.Portal>
-  )
+  );
 }
 
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }
+export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };

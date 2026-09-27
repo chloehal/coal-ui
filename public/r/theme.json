@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "theme",
+  "type": "registry:theme",
   "title": "Chlohal Theme",
   "description": "Chlohal signature theme — warm OKLCH neutrals, dark mode, brand amber.",
   "cssVars": {
@@ -24,6 +25,8 @@
       "border": "oklch(87.5% 0.010 75)",
       "input": "oklch(87.5% 0.010 75)",
       "ring": "oklch(22.0% 0.012 75)",
+      "brand": "oklch(68.0% 0.200 55)",
+      "brand-foreground": "oklch(14.0% 0.010 75)",
       "radius": "0.5rem"
     },
     "dark": {
@@ -45,8 +48,10 @@
       "destructive-foreground": "oklch(98.0% 0.003 0)",
       "border": "oklch(22.0% 0.014 75)",
       "input": "oklch(22.0% 0.014 75)",
-      "ring": "oklch(75.0% 0.010 75)"
+      "ring": "oklch(75.0% 0.010 75)",
+      "brand": "oklch(72.0% 0.200 55)",
+      "brand-foreground": "oklch(14.0% 0.010 75)"
     }
   },
-  "type": "registry:theme"
+  "registryDependencies": []
 }

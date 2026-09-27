@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select",
+  "type": "registry:ui",
+  "title": "Native Select",
+  "description": "Composable native select with the coal.ui theme.",
+  "files": [
+    {
+      "path": "registry/ui/native-select.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nexport function NativeSelect({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<\"select\">) {\n  return (\n    <select\n      className={cn(\n        \"h-9 w-full rounded-md border border-input bg-background px-3 text-sm focus-visible:outline-2 focus-visible:outline-ring disabled:opacity-50\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3100/r/utils.json",
+    "http://localhost:3100/r/theme.json"
+  ]
+}
