@@ -1,4 +1,5 @@
 import * as React from "react";
+import { PIXEL_SIZE, PIXEL_STEP } from "./pixel-grid.js";
 const shapes = {
   check: ["00001", "00010", "10100", "01000", "00000"],
   minus: ["00000", "00000", "11111", "00000", "00000"],
@@ -22,10 +23,10 @@ export function PixelGlyph({
           cell === "1" ? (
             <rect
               key={`${x}-${y}`}
-              x={x * 4}
-              y={y * 4}
-              width={3}
-              height={3}
+              x={x * PIXEL_STEP}
+              y={y * PIXEL_STEP}
+              width={PIXEL_SIZE}
+              height={PIXEL_SIZE}
               fill="currentColor"
               style={{ "--cell": x + y } as React.CSSProperties}
             />

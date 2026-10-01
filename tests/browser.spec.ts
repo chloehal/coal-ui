@@ -422,6 +422,7 @@ test("block loader retains its accessible name and stops with reduced motion", a
   const spinner = page.getByRole("status", { name: "Loading", exact: true });
   await expect(spinner).toBeVisible();
   const blocks = spinner.locator("svg rect");
+  expect((await blocks.first().boundingBox())!.width).toBeCloseTo(3, 3);
   expect(await blocks.count()).toBeGreaterThan(12);
   await expect(blocks.first()).toHaveCSS(
     "animation-name",
@@ -435,6 +436,9 @@ test("block loader retains its accessible name and stops with reduced motion", a
   await save.click();
   await expect(save).toBeDisabled();
   await expect(save).toHaveAccessibleName("Save");
+  expect(
+    (await save.locator("svg rect").first().boundingBox())!.width,
+  ).toBeCloseTo(3, 3);
   expect((await save.boundingBox())!.width).toBe(width);
   await expect(save.locator("svg rect").first()).toHaveCSS(
     "animation-name",
@@ -666,4 +670,116 @@ test("custom picker form values and reset survive the installed package", async 
   await expect(
     page.getByRole("combobox", { name: "Format", exact: true }),
   ).toContainText("SVG");
+});
+
+test("pixel cells keep the same rendered size across logos, controls and loader sizes", async ({
+  page,
+}) => {
+  for (const route of [
+    "/",
+    "/docs/foundations",
+    "/docs/components/checkbox",
+    "/docs/components/switch",
+  ]) {
+    await page.goto(route);
+    await page.evaluate(async () => {
+      await Promise.all(
+        document
+          .getAnimations()
+          .filter((a) => a.effect?.getTiming().iterations !== Infinity)
+          .map((a) => a.finished.catch(() => {})),
+      );
+    });
+    const cells = page
+      .locator(
+        ".coal-pixel-mark rect, .coal-pixel-glyph rect, .coal-loading-glyph rect",
+      )
+      .filter({ visible: true });
+    expect(await cells.count()).toBeGreaterThan(0);
+    const dimensions = await cells.evaluateAll((nodes) =>
+      nodes.map((node) => {
+        const { width, height } = node.getBoundingClientRect();
+        return { width, height };
+      }),
+    );
+    for (const { width, height } of dimensions) {
+      expect(width).toBeCloseTo(3, 3);
+      expect(height).toBeCloseTo(3, 3);
+    }
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  const hero = page.locator(".hero-bloom rect").first();
+  expect((await hero.boundingBox())!.width).toBeCloseTo(3, 3);
+  await page.locator(".brand-pixels").hover();
+  expect(
+    (await page.locator(".brand-pixels rect").first().boundingBox())!.width,
+  ).toBeCloseTo(3, 3);
+});
+
+test("switch keeps 25 fixed cells through its staggered motion and reduced motion", async ({
+  page,
+}) => {
+  await page.goto("/docs/components/switch");
+  const toggle = page.getByRole("switch", { name: "Quiet mode" });
+  const root = toggle.locator("..");
+  const cells = root.locator(".coal-switch-cell");
+  await expect(cells).toHaveCount(25);
+  await toggle.click();
+  const middle = await cells.evaluateAll((nodes) => {
+    nodes.forEach((node) =>
+      node.getAnimations().forEach((animation) => {
+        animation.pause();
+        animation.currentTime = 260;
+      }),
+    );
+    return nodes.map((node) => {
+      const box = node.getBoundingClientRect();
+      return {
+        x: box.x,
+        y: box.y,
+        width: box.width,
+        height: box.height,
+        opacity: getComputedStyle(node).opacity,
+      };
+    });
+  });
+  const columns = new Map<number, number>();
+  for (const cell of middle) {
+    expect(cell.width).toBe(3);
+    expect(cell.height).toBe(3);
+    expect(cell.opacity).toBe("1");
+    columns.set(cell.x, (columns.get(cell.x) ?? 0) + 1);
+  }
+  expect(
+    [...columns.entries()]
+      .sort((a, b) => a[0] - b[0])
+      .map(([, count]) => count),
+  ).toEqual([3, 2, 3, 2, 3, 2, 3, 2, 3, 2]);
+  await cells.evaluateAll((nodes) =>
+    nodes.forEach((node) =>
+      node.getAnimations().forEach((animation) => animation.finish()),
+    ),
+  );
+  const bounds = await cells.evaluateAll((nodes) => {
+    const boxes = nodes.map((node) => node.getBoundingClientRect());
+    return {
+      width:
+        Math.max(...boxes.map((b) => b.right)) -
+        Math.min(...boxes.map((b) => b.left)),
+      height:
+        Math.max(...boxes.map((b) => b.bottom)) -
+        Math.min(...boxes.map((b) => b.top)),
+    };
+  });
+  expect(bounds).toEqual({ width: 15, height: 15 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await toggle.focus();
+  await page.keyboard.press("Space");
+  await expect(toggle).toBeChecked();
+  expect(
+    await cells.evaluateAll(
+      (nodes) => nodes.flatMap((node) => node.getAnimations()).length,
+    ),
+  ).toBe(0);
 });

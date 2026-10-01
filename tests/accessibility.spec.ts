@@ -13,6 +13,14 @@ for (const theme of ["light", "dark"]) {
     const findings: unknown[] = [];
     const manualChecks: unknown[] = [];
     const inspect = async (state: string, contentOnly = false) => {
+      // Theme restoration happens during hydration; wait before collecting transitions.
+      await expect
+        .poll(() =>
+          page
+            .locator("html")
+            .evaluate((node) => node.classList.contains("dark")),
+        )
+        .toBe(theme === "dark");
       await page.evaluate(async () => {
         await document.fonts.ready;
         await Promise.all(

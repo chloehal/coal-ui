@@ -1480,7 +1480,7 @@
 @keyframes coal-enter {
   from {
     opacity: 0;
-    transform: translateY(6px) scale(0.98);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
@@ -1494,13 +1494,13 @@
   }
   to {
     opacity: 0;
-    transform: translateY(6px) scale(0.98);
+    transform: translateY(6px);
   }
 }
 @keyframes coal-dialog-enter {
   from {
     opacity: 0;
-    transform: translateY(12px) scale(0.985);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -1514,7 +1514,7 @@
   }
   to {
     opacity: 0;
-    transform: translateY(12px) scale(0.985);
+    transform: translateY(12px);
   }
 }
 @keyframes coal-sheet-enter {
@@ -1685,7 +1685,7 @@
 .coal-calendar button:active:not(:disabled),
 .coal-dialog-close:active,
 .coal-toast-close:active {
-  transform: translateY(1px) scale(0.975);
+  transform: translateY(1px);
   transition-duration: var(--coal-motion-press);
 }
 .coal-button--link:active:not(:disabled) {
@@ -1783,7 +1783,7 @@
 .coal-checkbox-indicator {
   display: inline-flex;
   opacity: 0;
-  transform: scale(0.6);
+  transform: none;
   transition:
     transform var(--coal-motion-settle) var(--coal-ease-settle),
     opacity var(--coal-motion-hover) ease;
@@ -1791,7 +1791,7 @@
 .coal-checkbox:has(input:checked) .coal-checkbox-indicator,
 .coal-checkbox[data-indeterminate] .coal-checkbox-indicator {
   opacity: 1;
-  transform: scale(1);
+  transform: none;
 }
 .coal-radio::before {
   content: "";
@@ -1799,26 +1799,26 @@
   height: 0.5rem;
   background: var(--coal-primary);
   opacity: 0;
-  transform: scale(0.5);
+  transform: none;
   transition:
     transform var(--coal-motion-settle) var(--coal-ease-settle),
     opacity var(--coal-motion-hover) ease;
 }
 .coal-radio:checked::before {
   opacity: 1;
-  transform: scale(1);
+  transform: none;
 }
 .coal-slider-input::-webkit-slider-thumb {
   transition: transform var(--coal-motion-settle) var(--coal-ease-settle);
 }
 .coal-slider-input:active::-webkit-slider-thumb {
-  transform: scale(1.15);
+  transform: none;
 }
 .coal-slider-input::-moz-range-thumb {
   transition: transform var(--coal-motion-settle) var(--coal-ease-settle);
 }
 .coal-slider-input:active::-moz-range-thumb {
-  transform: scale(1.15);
+  transform: none;
 }
 .coal-tabs-list {
   position: relative;
@@ -1938,7 +1938,7 @@
 @media (hover: hover) and (pointer: fine) {
   .coal-pixel-mark:hover rect {
     opacity: 0.85;
-    transform: scale(0.82);
+    transform: none;
   }
   .coal-empty:hover .coal-pixel-mark rect {
     opacity: 0.8;
@@ -2067,8 +2067,8 @@
 
 /* Square cells carry the selected state and movement. */
 .coal-pixel-glyph {
-  width: 16px;
-  height: 16px;
+  width: 19px;
+  height: 19px;
   display: block;
   overflow: visible;
 }
@@ -2082,7 +2082,7 @@
 }
 .coal-checkbox-indicator .coal-pixel-glyph rect {
   opacity: 0;
-  transform: scale(0.3);
+  transform: none;
   transition:
     opacity 140ms ease,
     transform 240ms var(--coal-ease-settle);
@@ -2091,90 +2091,116 @@
 .coal-checkbox:has(input:checked) .coal-pixel-glyph rect,
 .coal-checkbox[data-indeterminate] .coal-pixel-glyph rect {
   opacity: 1;
-  transform: scale(1);
+  transform: none;
 }
 .coal-switch {
-  width: 42px;
-  min-height: 26px;
-  padding: 4px;
+  width: 68px;
+  height: 29px;
+  min-height: 29px;
+  padding: 0;
 }
 .coal-switch-thumb,
 .coal-switch:has(input:checked) .coal-switch-thumb {
+  position: absolute;
+  left: -1px;
+  top: 6px;
+  width: 68px;
+  height: 15px;
+  overflow: hidden;
   background: transparent;
-  width: 16px;
-  height: 16px;
   color: var(--coal-muted);
+  transform: none;
+  transition: none;
 }
 .coal-switch:has(input:checked) .coal-switch-thumb {
   color: var(--coal-on-primary);
-  transform: translateX(16px);
 }
-.coal-switch-thumb rect {
-  transition: transform 320ms var(--coal-ease-settle);
-  transition-delay: calc(var(--cell) * 12ms);
+.coal-switch-cell {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 3px;
+  background: currentColor;
+  transform: translate(calc(10px + var(--cell-x)), var(--cell-y));
 }
-.coal-switch:has(input:checked) .coal-switch-thumb rect {
-  transform: scale(0.85);
+.coal-switch:has(input:checked) .coal-switch-cell {
+  transform: translate(calc(43px + var(--cell-x)), var(--cell-y));
 }
 .coal-progress {
-  height: 8px;
+  height: 7px;
 }
 .coal-progress::-webkit-progress-value {
-  background: repeating-linear-gradient(
-    90deg,
-    var(--coal-primary) 0 6px,
-    transparent 6px 8px
-  );
+  background: var(--coal-primary);
+  mask-image:
+    linear-gradient(90deg, #000 3px, transparent 3px),
+    linear-gradient(#000 3px, transparent 3px);
+  mask-size: 4px 4px;
+  mask-composite: intersect;
 }
 .coal-progress::-moz-progress-bar {
-  background: repeating-linear-gradient(
-    90deg,
-    var(--coal-primary) 0 6px,
-    transparent 6px 8px
-  );
+  background: var(--coal-primary);
+  mask-image:
+    linear-gradient(90deg, #000 3px, transparent 3px),
+    linear-gradient(#000 3px, transparent 3px);
+  mask-size: 4px 4px;
+  mask-composite: intersect;
 }
 .coal-tabs-indicator {
   height: 3px;
   background: repeating-linear-gradient(
     90deg,
     var(--coal-primary) 0 3px,
-    transparent 3px 5px
+    transparent 3px 4px
   );
 }
+/* A five-cell silhouette, using the same 3px cells and 1px gutters. */
 .coal-slider-input::-webkit-slider-thumb {
-  width: 18px;
-  height: 18px;
+  width: 19px;
+  height: 19px;
+  border: 0;
+  mask-image:
+    linear-gradient(90deg, #000 3px, transparent 3px),
+    linear-gradient(#000 3px, transparent 3px);
+  mask-size: 4px 4px;
+  mask-composite: intersect;
   clip-path: polygon(
-    25% 0,
-    75% 0,
-    75% 25%,
-    100% 25%,
-    100% 75%,
-    75% 75%,
-    75% 100%,
-    25% 100%,
-    25% 75%,
-    0 75%,
-    0 25%,
-    25% 25%
+    4px 0,
+    15px 0,
+    15px 4px,
+    100% 4px,
+    100% 15px,
+    15px 15px,
+    15px 100%,
+    4px 100%,
+    4px 15px,
+    0 15px,
+    0 4px,
+    4px 4px
   );
 }
 .coal-slider-input::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
+  width: 19px;
+  height: 19px;
+  border: 0;
+  mask-image:
+    linear-gradient(90deg, #000 3px, transparent 3px),
+    linear-gradient(#000 3px, transparent 3px);
+  mask-size: 4px 4px;
+  mask-composite: intersect;
   clip-path: polygon(
-    25% 0,
-    75% 0,
-    75% 25%,
-    100% 25%,
-    100% 75%,
-    75% 75%,
-    75% 100%,
-    25% 100%,
-    25% 75%,
-    0 75%,
-    0 25%,
-    25% 25%
+    4px 0,
+    15px 0,
+    15px 4px,
+    100% 4px,
+    100% 15px,
+    15px 15px,
+    15px 100%,
+    4px 100%,
+    4px 15px,
+    0 15px,
+    0 4px,
+    4px 4px
   );
 }
 .coal-color-field,

@@ -50,13 +50,13 @@ export function PixelClickFeedback() {
         const y = Math.round((Math.sin(angle) * radius) / 4) * 4;
         return cell.animate(
           [
-            { opacity: 0.8, transform: "translate(-1.5px, -1.5px) scale(0.6)" },
+            { opacity: 0.8, transform: "translate(-1.5px, -1.5px)" },
             {
               opacity: 0.65,
-              transform: `translate(${x * 0.7}px, ${y * 0.7}px) scale(1)`,
+              transform: `translate(${x * 0.7}px, ${y * 0.7}px)`,
               offset: 0.35,
             },
-            { opacity: 0, transform: `translate(${x}px, ${y}px) scale(0.35)` },
+            { opacity: 0, transform: `translate(${x}px, ${y}px)` },
           ],
           {
             duration: 520,

@@ -103,3 +103,5 @@ MIT.
 ## Accessibility
 
 See the [accessibility audit](docs/accessibility-audit.md) for scope, corrections, verification commands and remaining manual checks. Run `npm run test:a11y` against the local production preview. Automated checks target WCAG 2.2 A/AA and do not establish complete conformance.
+
+Pixel geometry uses a shared 3 × 3 CSS px cell with a 1px gutter in static motifs. The switch uses 25 touching cells in a 15 × 15 px square, spreading into staggered rows during its 520ms transition without hiding or resizing cells. Larger motifs add cells; motion changes position and opacity without resizing cells.
