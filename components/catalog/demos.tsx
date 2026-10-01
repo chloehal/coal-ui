@@ -332,7 +332,7 @@ export function Demo({ name }: { name: string }) {
       return (
         <div className="demo-stack">
           <Label htmlFor={id}>Accent color</Label>
-          <ColorPicker id={id} defaultValue="#c46b38" />
+          <ColorPicker id={id} defaultValue="#756887" />
         </div>
       );
     case "attachment":
@@ -520,7 +520,6 @@ export function Demo({ name }: { name: string }) {
         <Card className="w-full max-w-72">
           <CardHeader>
             <div className="mb-4 flex justify-between">
-              <span className="ember-mark" />
               <Badge variant="outline">Workspace</Badge>
             </div>
             <CardTitle>Room for your next idea.</CardTitle>
@@ -593,7 +592,7 @@ export function Demo({ name }: { name: string }) {
           {[
             [
               "What makes coal different?",
-              "Warm neutrals, precise details and components you own.",
+              "Cool neutrals, soft motion and components you own.",
             ],
             [
               "Can I make it my own?",
@@ -704,7 +703,7 @@ export function Demo({ name }: { name: string }) {
               A quieter workspace.
             </PopoverTitle>
             <PopoverDescription className="mt-2 text-muted-foreground">
-              Your components now share the same warm palette.
+              Your components now share the same cool palette.
             </PopoverDescription>
           </PopoverContent>
         </Popover>
@@ -936,7 +935,6 @@ export function Demo({ name }: { name: string }) {
         </div>
       ) : (
         <Empty className="w-full max-w-72">
-          <span className="ember-mark" />
           <p className="font-medium text-foreground">Good things start here.</p>
           <p>Add your first project to get going.</p>
           <Button

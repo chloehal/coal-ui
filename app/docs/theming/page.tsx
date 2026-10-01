@@ -1,3 +1,4 @@
+export const metadata = { title: "Theming — coal.ui" };
 export default function Theming() {
   return (
     <article className="docs-page">
@@ -8,10 +9,15 @@ export default function Theming() {
         Quiet character<span className="text-brand">.</span>
       </h1>
       <p className="docs-lead">
-        Square controls, fine borders and small copper details. Coal has its own
-        visual language without imposing a layout or resetting your application.
+        Crisp structures, square controls and muted mauve details. Coal has its
+        own visual language without imposing a layout or resetting your
+        application.
       </p>
-      <p><a className="text-link" href="/docs/foundations">Explore typography, motion and status rules →</a></p>
+      <p>
+        <a className="text-link" href="/docs/foundations">
+          Explore typography, motion and status rules →
+        </a>
+      </p>
       <h2>The palette</h2>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
         {["bg", "fg", "surface", "border", "brand"].map((token) => (
@@ -29,10 +35,10 @@ export default function Theming() {
         Import the CSS once, then override the prefixed variables in your own
         stylesheet. No Tailwind configuration is needed.
       </p>
-      <pre>
+      <pre tabIndex={0}>
         <code>
           {
-            ":root {\n  --coal-bg: #faf9f6;\n  --coal-fg: #24221e;\n  --coal-primary: #24221e;\n  --coal-on-primary: #faf9f6;\n  --coal-brand: #b96b23;\n  --coal-border: #d9d5cd;\n}"
+            ":root {\n  --coal-bg: #fafafa;\n  --coal-fg: #242424;\n  --coal-primary: #756887;\n  --coal-on-primary: #ffffff;\n  --coal-brand: #756887;\n  --coal-border: #d9d9d9;\n}"
           }
         </code>
       </pre>
@@ -42,7 +48,7 @@ export default function Theming() {
         the dark tokens. Put the theme on the document when using portaled
         overlays so they inherit it too.
       </p>
-      <pre>
+      <pre tabIndex={0}>
         <code>
           {'document.documentElement.classList.toggle("dark", isDark);'}
         </code>
@@ -60,8 +66,8 @@ export default function Theming() {
           styling.
         </li>
         <li>
-          Controls and containers use zero border radius. The circular spinner
-          is a loading symbol.
+          All corners use zero radius. Softness comes from motion. Square cells
+          form selection indicators, loading rings and progress tracks.
         </li>
         <li>
           Focus, disabled states and reduced-motion behavior are included.

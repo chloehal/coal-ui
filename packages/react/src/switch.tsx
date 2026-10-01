@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import { PixelGlyph } from "./pixel-glyph.js";
 import { cn } from "./internal.js";
 export type SwitchProps = Omit<
   React.ComponentPropsWithRef<"input">,
@@ -43,6 +44,8 @@ export function SwitchThumb({
       aria-hidden="true"
       className={cn("coal-switch-thumb", className)}
       {...props}
-    />
+    >
+      <PixelGlyph />
+    </span>
   );
 }

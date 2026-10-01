@@ -17,10 +17,10 @@ try {
     dir + "/app.tsx",
     `import * as React from 'react';
 import {createRoot} from 'react-dom/client';
-import {Button,Input,Checkbox,Switch,Calendar,Dialog,DialogTrigger,DialogContent,DialogTitle,DialogDescription,Select,SelectTrigger,SelectValue,SelectContent,SelectItem} from '@chlohal/coal-ui';
+import {Button,Input,Checkbox,Switch,TimePicker,ColorPicker,NativeSelect,Calendar,Dialog,DialogTrigger,DialogContent,DialogTitle,DialogDescription,Select,SelectTrigger,SelectValue,SelectContent,SelectItem} from '@chlohal/coal-ui';
 import '@chlohal/coal-ui/styles.css';
 import '@chlohal/coal-ui/fonts.css';
-function App(){const [date,setDate]=React.useState(new Date(2028,1,29));return <main style={{fontFamily:'sans-serif',padding:24,maxWidth:600}}><h1>Coal — plain React consumer</h1><p>Installed archive. No Next.js, Tailwind or UI dependency.</p><Button>Square button</Button><label>Email<Input type="email" /></label><form><label><Checkbox defaultChecked/>Accept</label><label><Switch defaultChecked/>Notifications</label><button type="reset">Reset form</button></form><Calendar selected={date} onSelect={setDate} disabled={d=>d.getDay()===0}/><output>{date?.toLocaleDateString('en-GB')}</output><Dialog><DialogTrigger>Open settings</DialogTrigger><DialogContent><DialogTitle>Settings</DialogTitle><DialogDescription>Native dialog with nested selection.</DialogDescription><Select defaultValue="solo" items={{solo:'Solo',team:'Team'}}><SelectTrigger aria-label="Plan"><SelectValue/></SelectTrigger><SelectContent><SelectItem value="solo">Solo</SelectItem><SelectItem value="team">Team</SelectItem></SelectContent></Select><Button>Last action</Button></DialogContent></Dialog></main>};createRoot(document.getElementById('root')).render(<App/>);`,
+function App(){const [date,setDate]=React.useState(new Date(2028,1,29));return <main style={{fontFamily:'sans-serif',padding:24,maxWidth:600}}><h1>Coal — plain React consumer</h1><p>Installed archive. No Next.js, Tailwind or UI dependency.</p><Button>Soft button</Button><label>Email<Input type="email" /></label><form><label><Checkbox defaultChecked/>Accept</label><label><Switch defaultChecked/>Notifications</label><label htmlFor="smoke-meeting">Meeting</label><TimePicker id="smoke-meeting" name="meeting" defaultValue="09:30"/><label htmlFor="smoke-accent">Accent</label><ColorPicker id="smoke-accent" name="accent" defaultValue="#756887"/><label htmlFor="smoke-format">Format</label><NativeSelect id="smoke-format" name="format" defaultValue="svg"><option value="svg">SVG</option><option value="png">PNG</option></NativeSelect><button type="reset">Reset form</button></form><Calendar selected={date} onSelect={setDate} disabled={d=>d.getDay()===0}/><output>{date?.toLocaleDateString('en-GB')}</output><Dialog><DialogTrigger>Open settings</DialogTrigger><DialogContent><DialogTitle>Settings</DialogTitle><DialogDescription>Native dialog with nested selection.</DialogDescription><Select defaultValue="solo" items={{solo:'Solo',team:'Team'}}><SelectTrigger aria-label="Plan"><SelectValue/></SelectTrigger><SelectContent><SelectItem value="solo">Solo</SelectItem><SelectItem value="team">Team</SelectItem></SelectContent></Select><Button>Last action</Button></DialogContent></Dialog></main>};createRoot(document.getElementById('root')).render(<App/>);`,
   );
   await build({
     entryPoints: [dir + "/app.tsx"],
@@ -30,7 +30,7 @@ function App(){const [date,setDate]=React.useState(new Date(2028,1,29));return <
     format: "esm",
     define: { "process.env.NODE_ENV": '"production"' },
     jsx: "automatic",
-    loader: {".woff2":"file"},
+    loader: { ".woff2": "file" },
   });
   writeFileSync(
     "public/package-smoke/index.html",

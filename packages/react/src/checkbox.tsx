@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import { PixelGlyph } from "./pixel-glyph.js";
 import { cn } from "./internal.js";
 export type CheckboxProps = Omit<
   React.ComponentPropsWithRef<"input">,
@@ -42,7 +43,9 @@ export function Checkbox({
         }}
       />
       {children ?? (
-        <CheckboxIndicator>{indeterminate ? "−" : "✓"}</CheckboxIndicator>
+        <CheckboxIndicator>
+          <PixelGlyph shape={indeterminate ? "minus" : "check"} />
+        </CheckboxIndicator>
       )}
     </span>
   );

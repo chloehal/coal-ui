@@ -1,7 +1,7 @@
 {
   "name": "@chlohal/coal-ui",
   "version": "0.5.0",
-  "description": "Independent, square-edged React components by Chlohal.",
+  "description": "Independent, tactile React components by Chlohal.",
   "type": "module",
   "license": "MIT",
   "sideEffects": [

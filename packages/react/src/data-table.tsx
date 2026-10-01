@@ -1,6 +1,7 @@
 "use client";
 import * as React from "react";
 import { cn } from "./internal.js";
+import { useLayoutMotion } from "./motion.js";
 import { Checkbox } from "./checkbox.js";
 import { Pagination } from "./pagination.js";
 export type DataTableColumn<T> = {
@@ -30,6 +31,7 @@ export function DataTable<T>({
   onSelectionChange,
   className,
 }: DataTableProps<T>) {
+  const motion = useLayoutMotion<HTMLTableSectionElement>();
   const [query, setQuery] = React.useState("");
   const [sort, setSort] = React.useState<{
     id: string;
@@ -78,6 +80,7 @@ export function DataTable<T>({
         placeholder="Filter rows…"
         value={query}
         onChange={(e) => {
+          motion.capture();
           setQuery(e.target.value);
           setPage(1);
         }}
@@ -128,6 +131,7 @@ export function DataTable<T>({
                     <button
                       type="button"
                       onClick={() => {
+                        motion.capture();
                         setSort({
                           id: col.id,
                           descending:
@@ -151,10 +155,11 @@ export function DataTable<T>({
               ))}
             </tr>
           </thead>
-          <tbody>
+          <tbody ref={motion.ref}>
             {visible.map((row) => (
               <tr
                 key={getRowId(row)}
+                data-motion-key={getRowId(row)}
                 data-selected={selected.includes(getRowId(row)) || undefined}
               >
                 {selectable && (
@@ -194,7 +199,15 @@ export function DataTable<T>({
           {filtered.length} results
           {selectable ? ` · ${selected.length} selected` : ""}
         </span>
-        <Pagination page={current} pageCount={pages} onPageChange={setPage} />
+        <Pagination
+          label={`${caption} pagination`}
+          page={current}
+          pageCount={pages}
+          onPageChange={(value) => {
+            motion.capture();
+            setPage(value);
+          }}
+        />
       </div>
     </div>
   );

@@ -1,11 +1,14 @@
 "use client";
 import * as React from "react";
+import { useLayoutMotion } from "@/packages/react/src/motion";
+import { PixelMark } from "@chlohal/coal-ui";
 import Link from "next/link";
 import { ArrowUpRight, ArrowRight, Search } from "lucide-react";
 import { catalog, categories, type Category } from "@/lib/catalog";
 import { Demo } from "./demos";
 import { Button } from "@/components/ui/button";
 export function Gallery() {
+  const motion = useLayoutMotion<HTMLDivElement>();
   const [category, setCategory] = React.useState<Category>("All components");
   const [query, setQuery] = React.useState("");
   const filtered = catalog.filter(
@@ -19,19 +22,25 @@ export function Gallery() {
     <>
       <section className="intro">
         <div className="eyebrow">
-          <span className="ember-dot" /> THE COMPONENT COLLECTION{" "}
+          <span className="ember-dot" /> PRECISE PARTS. ORGANIC POSSIBILITIES.{" "}
           <span className="version">v0.5</span>
         </div>
-        <h1>
-          Less noise.
-          <br />
-          <span className="intro-secondary">More character.</span>
-        </h1>
+        <div className="intro-heading">
+          <h1>
+            Built on a grid.
+            <br />
+            <span className="intro-secondary">Made to feel alive.</span>
+          </h1>
+          <div className="intro-organic" aria-hidden="true">
+            <PixelMark size={208} className="hero-bloom" />
+            <span>SMALL SQUARES / SOFT FORMS</span>
+          </div>
+        </div>
         <div className="intro-bottom">
           <p>
             Thoughtful components for interfaces that feel like you.
-            <br className="desktop-break" /> Warm by nature. Minimal by design.
-            Yours to build with.
+            <br className="desktop-break" /> Cool in tone. Soft in motion. Yours
+            to build with.
           </p>
           <Link className="intro-link" href="/docs/installation">
             Start building <ArrowUpRight size={15} />
@@ -59,7 +68,7 @@ export function Gallery() {
               The essentials
               <span className="component-count">{catalog.length}</span>
             </h2>
-            <p>Small pieces. Endless possibilities.</p>
+            <p>Small squares. A whole new feel.</p>
           </div>
           <div className="gallery-search">
             <Search size={14} />
@@ -67,25 +76,35 @@ export function Gallery() {
               aria-label="Search components"
               placeholder="Search components…"
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) => {
+                motion.capture();
+                setQuery(e.target.value);
+              }}
             />
           </div>
         </div>
-        <div className="filter-row" aria-label="Filter by category">
+        <div className="filter-row" role="group" aria-label="Filter by category">
           {categories.map((c) => (
             <button
               key={c}
               aria-pressed={c === category}
               className={c === category ? "filter active" : "filter"}
-              onClick={() => setCategory(c)}
+              onClick={() => {
+                motion.capture();
+                setCategory(c);
+              }}
             >
               {c}
             </button>
           ))}
         </div>
-        <div className="component-grid">
+        <div className="component-grid" ref={motion.ref}>
           {filtered.map((item) => (
-            <article key={item.name} className="component-tile">
+            <article
+              key={item.name}
+              data-motion-key={item.name}
+              className="component-tile"
+            >
               <div className="tile-preview">
                 <Demo name={item.name} />
               </div>
@@ -112,6 +131,7 @@ export function Gallery() {
             <Button
               variant="outline"
               onClick={() => {
+                motion.capture();
                 setQuery("");
                 setCategory("All components");
               }}
@@ -123,7 +143,8 @@ export function Gallery() {
       </section>
       <footer className="page-footer">
         <span>
-          <span className="coal-mark small" /> A little less. A little better.
+          <PixelMark size={22} variant="seed" /> Precise by construction. Alive
+          by interaction.
         </span>
         <Link href="/docs/coverage">
           Explore the coverage report <ArrowRight size={14} />

@@ -45,11 +45,51 @@ export function Tabs({
 export function TabsList({
   className,
   onKeyDown,
+  children,
+  ref: forwardedRef,
   ...props
 }: React.ComponentPropsWithRef<"div">) {
   const c = useRequired(Context, "TabsList");
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [marker, setMarker] = React.useState({
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+  });
+  React.useLayoutEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const place = () => {
+      const active = node.querySelector<HTMLElement>(
+        '[role="tab"][aria-selected="true"]',
+      );
+      if (!active) {
+        setMarker({ x: 0, y: 0, width: 0, height: 0 });
+        return;
+      }
+      setMarker({
+        x: active.offsetLeft,
+        y: active.offsetTop,
+        width: active.offsetWidth,
+        height: active.offsetHeight,
+      });
+    };
+    place();
+    const observer = new ResizeObserver(place);
+    observer.observe(node);
+    node
+      .querySelectorAll('[role="tab"]')
+      .forEach((tab) => observer.observe(tab));
+    return () => observer.disconnect();
+  }, [c.value, children]);
   return (
     <div
+      ref={(node) => {
+        ref.current = node;
+        if (typeof forwardedRef === "function") forwardedRef(node);
+        else if (forwardedRef) forwardedRef.current = node;
+      }}
       role="tablist"
       aria-orientation={c.orientation}
       className={cn("coal-tabs-list", className)}
@@ -58,7 +98,24 @@ export function TabsList({
         onKeyDown?.(e);
         if (!e.defaultPrevented) moveFocus(e, '[role="tab"]', c.orientation);
       }}
-    />
+    >
+      {children}
+      <span
+        aria-hidden="true"
+        className="coal-tabs-indicator"
+        style={
+          c.orientation === "vertical"
+            ? {
+                width: 2,
+                height: marker.height,
+                top: 0,
+                bottom: "auto",
+                transform: `translateY(${marker.y}px)`,
+              }
+            : { width: marker.width, transform: `translateX(${marker.x}px)` }
+        }
+      />
+    </div>
   );
 }
 export function TabsTrigger({

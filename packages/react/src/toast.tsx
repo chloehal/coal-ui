@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import { exitDuration } from "./motion.js";
 import { createPortal } from "react-dom";
 import { type Intent, intentSymbols } from "./intent.js";
 import { useRequired } from "./internal.js";
@@ -9,7 +10,7 @@ export type ToastOptions = {
   timeout?: number;
   intent?: Intent;
 };
-type Entry = ToastOptions & { id: string };
+type Entry = ToastOptions & { id: string; closing?: boolean };
 type Manager = {
   add: (options: ToastOptions) => string;
   close: (id?: string) => void;
@@ -21,13 +22,22 @@ export function useToast() {
 function ToastItem({
   toast,
   close,
+  remove,
 }: {
   toast: Entry;
   close: (id: string) => void;
+  remove: (id: string) => void;
 }) {
+  const ref = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    if (!toast.closing) return;
+    const timer = setTimeout(() => remove(toast.id), exitDuration(ref.current));
+    return () => clearTimeout(timer);
+  }, [toast.closing, toast.id, remove]);
   const [paused, setPaused] = React.useState(false);
   React.useEffect(() => {
     if (
+      toast.closing ||
       paused ||
       toast.timeout === 0 ||
       (toast.timeout === undefined &&
@@ -39,6 +49,10 @@ function ToastItem({
   }, [toast, close, paused]);
   return (
     <div
+      ref={ref}
+      data-state={toast.closing ? "closed" : "open"}
+      inert={toast.closing || undefined}
+      aria-hidden={toast.closing || undefined}
       className={`coal-toast coal-intent-${toast.intent ?? "neutral"}`}
       onPointerEnter={() => setPaused(true)}
       onPointerLeave={() => setPaused(false)}
@@ -88,7 +102,13 @@ export function ToastProvider({
   const counter = React.useRef(0);
   const close = React.useCallback(
     (id?: string) =>
-      setToasts((list) => (id ? list.filter((t) => t.id !== id) : [])),
+      setToasts((list) =>
+        list.map((t) => (!id || t.id === id ? { ...t, closing: true } : t)),
+      ),
+    [],
+  );
+  const remove = React.useCallback(
+    (id: string) => setToasts((list) => list.filter((t) => t.id !== id)),
     [],
   );
   const add = React.useCallback(
@@ -124,7 +144,7 @@ export function ToastProvider({
         createPortal(
           <section aria-label="Notifications" className="coal-toaster">
             {toasts.map((t) => (
-              <ToastItem key={t.id} toast={t} close={close} />
+              <ToastItem key={t.id} toast={t} close={close} remove={remove} />
             ))}
           </section>,
           document.body,

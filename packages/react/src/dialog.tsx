@@ -71,6 +71,7 @@ export function DialogContent({
   onCancel,
   onClose,
   onClick,
+  onKeyDown,
   ref: forwardedRef,
   ...props
 }: React.ComponentPropsWithRef<"dialog">) {
@@ -100,6 +101,39 @@ export function DialogContent({
       aria-labelledby={`${c.id}-title`}
       aria-describedby={`${c.id}-description`}
       className={cn("coal-dialog", className)}
+      onKeyDown={(e) => {
+        onKeyDown?.(e);
+        if (e.defaultPrevented || e.key !== "Tab") return;
+        const focusable = Array.from(
+          e.currentTarget.querySelectorAll<HTMLElement>(
+            'button:not(:disabled), a[href], input:not(:disabled):not([type="hidden"]), select:not(:disabled), textarea:not(:disabled), [tabindex]:not([tabindex="-1"])',
+          ),
+        ).filter(
+          (node) =>
+            node.tabIndex >= 0 &&
+            !node.closest("[inert], [hidden]") &&
+            node.getClientRects().length > 0 &&
+            getComputedStyle(node).visibility !== "hidden",
+        );
+        const first = focusable[0],
+          last = focusable[focusable.length - 1];
+        if (!first) {
+          e.preventDefault();
+          e.currentTarget.focus();
+          return;
+        }
+        if (
+          e.shiftKey &&
+          (document.activeElement === first ||
+            document.activeElement === e.currentTarget)
+        ) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }}
       onCancel={(e) => {
         onCancel?.(e);
         if (!e.defaultPrevented) {

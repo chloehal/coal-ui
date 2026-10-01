@@ -65,9 +65,62 @@ test("optional fonts ship with licenses and local URLs", () => {
   assert.doesNotMatch(css, /https?:/);
   for (const match of css.matchAll(/url\("\.\/([^\"]+)"\)/g))
     assert.ok(readFileSync("packages/react/" + match[1]).length > 1000);
-  for (const name of ["sans", "mono"])
+  for (const name of ["manrope", "dm-mono"])
     assert.match(
-      readFileSync(`packages/react/fonts/plex-${name}-LICENSE.txt`, "utf8"),
+      readFileSync(`packages/react/fonts/${name}-LICENSE.txt`, "utf8"),
       /OPEN FONT LICENSE/i,
     );
+});
+
+test("essential control boundaries and secondary text meet contrast in both themes", () => {
+  const css = readFileSync("packages/react/src/styles.css", "utf8");
+  const colors = (token) =>
+    [
+      ...css.matchAll(new RegExp(`--coal-${token}:\\s*(#[a-fA-F0-9]{6})`, "g")),
+    ].map((m) => m[1]);
+  const lum = (hex) => {
+    const rgb = hex
+      .slice(1)
+      .match(/../g)
+      .map((c) => parseInt(c, 16) / 255)
+      .map((c) => (c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4));
+    return rgb[0] * 0.2126 + rgb[1] * 0.7152 + rgb[2] * 0.0722;
+  };
+  for (const [token, minimum] of [
+    ["muted", 4.5],
+    ["control-border", 3],
+    ["focus", 3],
+  ]) {
+    for (const surface of ["bg", "surface"]) {
+      const foregrounds = colors(token),
+        backgrounds = colors(surface);
+      assert.equal(foregrounds.length, 2);
+      assert.equal(backgrounds.length, 2);
+      foregrounds.forEach((color, i) => {
+        const a = lum(color),
+          b = lum(backgrounds[i]);
+        const ratio = (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+        assert.ok(
+          ratio >= minimum,
+          `${token}/${surface}, theme ${i}: ${ratio.toFixed(2)} < ${minimum}`,
+        );
+      });
+    }
+  }
+});
+
+test("custom required selects expose the requirement on their visible control", async () => {
+  const { createElement: h } = await import("react");
+  const { renderToStaticMarkup } = await import("react-dom/server");
+  const { Select, SelectTrigger, SelectValue } = await import(
+    "../packages/react/dist/index.js"
+  );
+  const html = renderToStaticMarkup(
+    h(
+      Select,
+      { required: true },
+      h(SelectTrigger, { "aria-label": "Plan" }, h(SelectValue)),
+    ),
+  );
+  assert.match(html, /<button[^>]*aria-required="true"/);
 });

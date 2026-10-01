@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import { Button } from "./button.js";
 import { cn, useValue } from "./internal.js";
 export type AttachmentProps = {
   label?: string;
@@ -37,15 +38,30 @@ export function Attachment({
   const [files, set] = useValue(value, [], onValueChange);
   const [error, setError] = React.useState("");
   const id = React.useId();
+  const input = React.useRef<HTMLInputElement>(null);
   return (
     <div className={cn("coal-attachment", className)}>
-      <label htmlFor={id}>{label}</label>
+      <span id={`${id}-label`}>{label}</span>
+      <Button
+        variant="outline"
+        disabled={disabled}
+        aria-labelledby={`${id}-label ${id}-action`}
+        aria-describedby={`${id}-hint ${id}-error`}
+        onClick={() => input.current?.click()}
+      >
+        <span aria-hidden="true">＋</span>
+        <span id={`${id}-action`}>Choose files</span>
+      </Button>
       <input
         id={id}
+        ref={input}
+        hidden
+        aria-labelledby={`${id}-label`}
         type="file"
         accept={accept}
         multiple={multiple}
         disabled={disabled}
+        aria-invalid={!!error || undefined}
         aria-describedby={`${id}-hint ${id}-error`}
         onChange={(e) => {
           const chosen = Array.from(e.target.files ?? []);

@@ -77,14 +77,14 @@ const rows: [string, string, Category, string, string][] = [
     "Time picker",
     "Inputs",
     "Give a moment its time.",
-    "Native time input with name, required, min, max and step. Values use HH:mm or HH:mm:ss; visible format follows the browser locale. No timezone conversion.",
+    "Custom hour and minute controls with direct HH:mm entry, keyboard increments, min/max validation and form support. No operating-system picker or timezone conversion.",
   ],
   [
     "color-picker",
     "Color picker",
     "Inputs",
     "Choose a single accent.",
-    "Native color input with value/onChange or defaultValue. Supports opaque sRGB hex colors; label it explicitly. No alpha or palette editor.",
+    "Custom swatches and an editable hex field. Supports value/onChange or defaultValue for opaque sRGB colors.",
   ],
   [
     "attachment",
@@ -123,10 +123,10 @@ const rows: [string, string, Category, string, string][] = [
   ],
   [
     "native-select",
-    "Native select",
+    "Option select",
     "Inputs",
-    "A simple choice with native behavior.",
-    "Uses the operating system picker. Supports name, required, multiple, disabled and native options.",
+    "A familiar choice, with a custom menu.",
+    "Custom keyboard-accessible single selection. The NativeSelect export accepts option children for compatibility; no operating-system menu is shown.",
   ],
   [
     "toast",
