@@ -18,7 +18,7 @@ export function Spinner({
       style={{ width: size, height: size, ...style }}
       {...props}
     >
-      <LoadingGlyph />
+      <LoadingGlyph size={size} />
     </span>
   );
 }

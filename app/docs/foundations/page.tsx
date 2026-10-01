@@ -61,7 +61,7 @@ export default function Foundations() {
         <tbody>
           {[
             ["Hover", "Color and detail · 180ms"],
-            ["Press", "Immediate compression · 90ms, gentle return · 320ms"],
+            ["Press", "Immediate press · 90ms, gentle return · 320ms"],
             ["Focus", "Immediate, visible outline"],
             ["Switch, tabs, disclosure", "Continuous movement · 320ms"],
             ["Filtering and sorting", "Move from the current position · 380ms"],

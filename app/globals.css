@@ -752,7 +752,7 @@ textarea {
     transform var(--coal-motion-settle) var(--coal-ease-settle);
 }
 .filter:active {
-  transform: scale(0.975);
+  transform: translateY(1px);
   transition-duration: var(--coal-motion-press);
 }
 .intro-link svg,
@@ -885,10 +885,6 @@ textarea {
   margin-top: 8px;
 }
 @media (max-width: 1150px) {
-  .intro-organic svg {
-    width: 144px;
-    height: 144px;
-  }
   .intro-organic > span {
     display: none;
   }
@@ -907,10 +903,6 @@ textarea {
     top: 8px;
     opacity: 0.18;
     pointer-events: none;
-  }
-  .intro-organic svg {
-    width: 130px;
-    height: 130px;
   }
   .pixel-study {
     flex-wrap: wrap;
