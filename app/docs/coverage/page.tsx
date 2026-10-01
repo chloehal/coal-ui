@@ -1,3 +1,4 @@
+export const metadata = { title: "Coverage — coal.ui" };
 import Link from "next/link";
 import { catalog } from "@/lib/catalog";
 const references = [

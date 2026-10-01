@@ -1,6 +1,15 @@
 "use client";
 import * as React from "react";
 import {
+  PixelMark,
+  Spinner,
+  Switch,
+  Slider,
+  SliderThumb,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
   Badge,
   Alert,
   Button,
@@ -21,11 +30,11 @@ import {
   type Intent,
 } from "@chlohal/coal-ui";
 const statuses: [Intent, string][] = [
-  ["neutral", "En attente"],
-  ["info", "Synchronisation en cours"],
-  ["success", "Enregistré"],
-  ["warning", "Limite bientôt atteinte"],
-  ["danger", "Échec de l’enregistrement"],
+  ["neutral", "Pending"],
+  ["info", "Syncing"],
+  ["success", "Saved"],
+  ["warning", "Approaching the limit"],
+  ["danger", "Could not save"],
 ];
 function Notifications() {
   const toast = useToast();
@@ -33,23 +42,21 @@ function Notifications() {
     <div className="flex flex-wrap gap-3">
       <Button
         variant="outline"
-        onClick={() =>
-          toast.add({ title: "Modifications enregistrées", intent: "success" })
-        }
+        onClick={() => toast.add({ title: "Changes saved", intent: "success" })}
       >
-        Confirmer une sauvegarde
+        Confirm a save
       </Button>
       <Button
         variant="outline"
         onClick={() =>
           toast.add({
-            title: "Enregistrement impossible",
-            description: "Votre saisie est conservée. Réessayez.",
+            title: "Could not save changes",
+            description: "Your changes are preserved. Please try again.",
             intent: "danger",
           })
         }
       >
-        Afficher une erreur persistante
+        Show a persistent error
       </Button>
     </div>
   );
@@ -63,7 +70,70 @@ export function FoundationsPreview() {
   React.useEffect(() => () => clearTimeout(timer.current), []);
   return (
     <>
-      <h2>Une intention, un traitement</h2>
+      <h2 id="motion" style={{ scrollMarginTop: 100 }}>
+        Motion at your fingertips
+      </h2>
+      <div className="motion-preview">
+        <div className="motion-controls">
+          <div className="motion-preview-label">01 / PRESS & SELECT</div>
+          <div className="flex flex-wrap items-center gap-5">
+            <Button>Press and hold</Button>
+            <label className="flex items-center gap-3 text-sm">
+              <Switch defaultChecked />
+              Notifications
+            </label>
+          </div>
+          <Slider defaultValue={55}>
+            <SliderThumb aria-label="Intensity" />
+          </Slider>
+          <Tabs defaultValue="design">
+            <TabsList>
+              <TabsTrigger value="design">Design</TabsTrigger>
+              <TabsTrigger value="motion">Motion</TabsTrigger>
+              <TabsTrigger value="details">Details</TabsTrigger>
+            </TabsList>
+            <TabsContent value="design">
+              Sharp edges. Soft movement.
+            </TabsContent>
+            <TabsContent value="motion">
+              Immediate response. A gentle settle.
+            </TabsContent>
+            <TabsContent value="details">
+              Zero radius. One mauve accent.
+            </TabsContent>
+          </Tabs>
+        </div>
+        <div className="motion-loading">
+          <div className="motion-preview-label">02 / LOADING</div>
+          <div className="flex items-center gap-6">
+            <Spinner size={20} />
+            <Spinner size={32} />
+            <Spinner size={48} />
+          </div>
+          <p>Fixed squares. Light moving through them.</p>
+          <a
+            className="text-link"
+            href="https://loading.dev/spinners/loading"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Inspired by loading.dev ↗
+          </a>
+        </div>
+      </div>
+      <h2>Squares, put to work</h2>
+      <div className="pixel-study">
+        <PixelMark size={112} variant="seed" />
+        <PixelMark size={160} />
+        <div>
+          <p>A precise grid. An organic silhouette.</p>
+          <p>
+            Cells form a check, move with a switch, and track progress. The same
+            square becomes a working part of each component.
+          </p>
+        </div>
+      </div>
+      <h2>Meaning through shape and words</h2>
       <div className="grid gap-3">
         {statuses.map(([intent, label]) => (
           <div className="grid gap-2" key={intent}>
@@ -72,27 +142,29 @@ export function FoundationsPreview() {
           </div>
         ))}
       </div>
-      <h2>Un mouvement court et utile</h2>
+      <h2>Soft, settled movement</h2>
       <div className="flex flex-wrap gap-3">
         <Dialog>
-          <DialogTrigger render={<Button />}>Tester la fenêtre</DialogTrigger>
+          <DialogTrigger render={<Button />}>Open dialog</DialogTrigger>
           <DialogContent>
-            <DialogTitle>Une décision à la fois</DialogTitle>
+            <DialogTitle>One decision at a time</DialogTitle>
             <DialogDescription>
-              200 ms à l’ouverture, 140 ms à la fermeture. Le focus revient au
-              déclencheur.
+              Give your project a name. You can change it later.
             </DialogDescription>
-            <Input aria-label="Nom du projet" placeholder="Mon projet" />
+            <div className="coal-field">
+              <Label htmlFor="foundation-dialog-name">Project name</Label>
+              <Input id="foundation-dialog-name" placeholder="My project" />
+            </div>
           </DialogContent>
         </Dialog>
         <Popover>
           <PopoverTrigger render={<Button variant="outline" />}>
-            Tester le popover
+            Open popover
           </PopoverTrigger>
           <PopoverContent>
-            <PopoverTitle>Un détail proche de l’action</PopoverTitle>
+            <PopoverTitle>A detail close to the action</PopoverTitle>
             <PopoverDescription>
-              4 px de déplacement, 160 ms.
+              Useful context, right where you need it.
             </PopoverDescription>
           </PopoverContent>
         </Popover>
@@ -103,28 +175,28 @@ export function FoundationsPreview() {
             timer.current = setTimeout(() => setBusy(false), 1800);
           }}
         >
-          Enregistrer
+          Save
         </Button>
       </div>
-      <h2>Confortable, puis compact si nécessaire</h2>
+      <h2>Comfortable, compact when needed</h2>
       <Button
         variant="outline"
         aria-pressed={compact}
         onClick={() => setCompact(!compact)}
       >
-        Densité compacte
+        Compact density
       </Button>
       <div
         className="coal-theme mt-4 flex items-end gap-3"
         data-density={compact ? "compact" : "comfortable"}
       >
         <div>
-          <Label htmlFor="foundation-name">Nom du projet</Label>
+          <Label htmlFor="foundation-name">Project name</Label>
           <Input id="foundation-name" placeholder="Coal" />
         </div>
-        <Button>Créer</Button>
+        <Button>Create</Button>
       </div>
-      <h2>Des notifications qui respectent l’attention</h2>
+      <h2>Notifications that respect your attention</h2>
       <ToastProvider>
         <Notifications />
       </ToastProvider>

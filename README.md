@@ -1,8 +1,20 @@
 # coal.ui
 
-55 original React components. Square edges, charcoal and paper surfaces, a copper accent. Coal owns its implementations and styles: no Base UI, Radix, shadcn or Tailwind dependency in the distributed library.
+**Built on a grid. Made to feel alive.**
 
-## Install in a React project
+55 original React components with a technical backbone and an organic feel. Small squares form soft silhouettes, a quiet loading ring and a brief bloom at the point of a click. Crisp structure gives those gestures a place to live.
+
+## The design language
+
+- **Neutral off-white and one mauve accent.** Grayscale surfaces and text. Mauve is reserved for actions, selection and focus. No cream, beige or orange.
+- **Zero radius. Soft movement.** Every corner is square. Immediate press feedback and a gentle settle provide the softness.
+- **Organic forms, square cells.** Square cells build the checkbox mark, switch thumb, segmented progress and tab indicator, as well as the loader and decorative motifs.
+- **Tactile, settled motion.** A press responds immediately, then eases back. Switches slide, tab indicators follow the selection, disclosures fold, and filters and table sorts preserve visual continuity.
+- **A light touch.** Pixel bursts last 520 ms and run only after a pointer click. No ambient particle loop. Reduced motion stops the loader, removes transitions and suppresses click feedback.
+
+The library owns its implementations and styles. It has no Base UI, Radix, shadcn or Tailwind runtime dependency. React 19 and ReactDOM 19 are peers.
+
+## Install
 
 With the local documentation server running:
 
@@ -10,16 +22,32 @@ With the local documentation server running:
 npm install http://localhost:3100/downloads/chlohal-coal-ui-0.5.0.tgz
 ```
 
+Or download the archive and install it on another machine:
+
+```sh
+npm install ./chlohal-coal-ui-0.5.0.tgz
+```
+
+The package has **not been published to npm**. It includes JavaScript, TypeScript declarations, namespaced CSS and optional local fonts.
+
 ```tsx
-import { Button } from "@chlohal/coal-ui";
+import { Button, PixelClickFeedback } from "@chlohal/coal-ui";
 import "@chlohal/coal-ui/styles.css";
+import "@chlohal/coal-ui/fonts.css"; // optional
 
 export default function App() {
-  return <Button onClick={() => alert("Hello")}>Start a project</Button>;
+  return (
+    <>
+      <PixelClickFeedback /> {/* optional: mount once for page-wide click feedback */}
+      <Button onClick={() => console.log("Start")}>Start a project</Button>
+    </>
+  );
 }
 ```
 
-React 19 and ReactDOM 19 are peer dependencies. The archive includes JavaScript, TypeScript declarations and namespaced CSS. It is ready for local installation; the package has **not been published to npm**. Download the archive and use `npm install ./chlohal-coal-ui-0.5.0.tgz` on another machine. The site’s illustrative icons use lucide-react; the Coal package does not.
+`Spinner` and loading buttons share a ring of fixed square blocks with circulating opacity. `PixelMark` provides decorative `bloom` and `seed` silhouettes. `Empty` includes a seed motif by default; pass `motif={false}` when supplying your own illustration. All decorative graphics are hidden from assistive technology.
+
+The loading reference is [loading.dev](https://loading.dev/spinners/loading); the pointer gesture is inspired by [Obsidian UI](https://www.obsidianui.dev/docs/add-utilities). Coal uses its own square-cell artwork and implementation.
 
 ## Local development
 
@@ -31,9 +59,9 @@ npm run package:build
 npm run dev -- --port 3100
 ```
 
-Open http://localhost:3100. Installation, theme and coverage documentation live under `/docs`.
+Open http://localhost:3100. Try the movement, loader and pixel forms at http://localhost:3100/docs/foundations#motion.
 
-## Checks and production preview
+## Verification
 
 ```sh
 npm run build
@@ -45,29 +73,33 @@ npm run start -- --port 3100
 npm run test:browser
 ```
 
-The build creates the package archive, 55 examples and a plain React consumer at `/package-smoke/index.html`. Tests extract the real archive, compile every example without project aliases, verify the dependency boundary, and exercise interactions in a browser.
+The build creates the installable archive, 55 runnable examples and a plain React consumer at `/package-smoke/index.html`. Tests compile the real archive in isolation, check contrast and dependency boundaries, and exercise browser interactions and reduced motion.
+
+## Foundations
+
+`--coal-*` tokens control the palette, radius, density and motion. The documentation consumes the same palette as the installed library. Add `.dark` to the document root for dark mode, including portaled content. Set `data-coal-density="compact"` on the root for compact controls.
+
+Optional local Manrope (400/500/600) and DM Mono (400/500) fonts ship with OFL licenses. Use `var(--coal-font-sans)` for application text. No external font request.
+
+Badge, Alert and Toast share `intent`: neutral, info, success, warning and danger. Each provides paired text/background and solid/on-solid colors in both themes. Labels and symbols carry meaning alongside color. Warning and danger toasts persist unless an explicit timeout is supplied.
+
+Motion defaults: 90 ms press, 180 ms hover, 320 ms controls/disclosures, 300 ms floating entry, 380 ms dialog/layout, 440 ms sheet and 220 ms exit. Loading uses a 1200 ms opacity cycle. Fast repeated actions must not leave stale overlays or stranded content. Loading buttons preserve their label and dimensions and reject duplicate clicks.
 
 ## Source
 
-- `packages/react/src`: canonical implementations and CSS.
+- `packages/react/src`: canonical components, pixel utilities and styles.
 - `packages/react/package.json`: distributable package manifest.
-- `components/ui`: package re-exports for the Next.js documentation site.
-- `components/catalog/demos.tsx`: working examples.
-- `lib/catalog.ts`: component inventory and limitations.
-- `docs/research.md`: comparison against seven component ecosystems.
-- `docs/component-selection.md`: selection from the extended inventory, aliases and excluded modules.
-- `registry/` and `public/r/`: retained historical v0.2 files, excluded from the current package and build.
+- `components/ui`: package re-exports for the documentation site.
+- `components/catalog/demos.tsx`: runnable component examples.
+- `lib/catalog.ts`: inventory and API boundaries.
+- `.interface-design/system.md`: shared design decisions.
+- `docs/`: research and component selection notes.
+- `registry/` and `public/r/`: historical v0.2 assets, excluded from the current package and build.
 
-`--coal-*` tokens customize colors; `.dark` on the document root enables dark mode. Styles do not reset the host page. Controls use native HTML semantics where possible, including native dialog focus management. Advanced modules and current API boundaries are explicitly listed at `/docs/coverage`.
+The package applies no global reset. Advanced modules and current limitations are listed at `/docs/coverage`. Test labels, focus order and interactions in the context of your application.
 
 MIT.
 
-## Coal foundations
+## Accessibility
 
-Import `@chlohal/coal-ui/fonts.css` after styles.css to opt into locally bundled IBM Plex Sans (400/500/600) and Mono (400/500), Latin subset. OFL licenses ship with the fonts. Set your body font to `var(--coal-font-sans)` for application text. No external font request or runtime dependency.
-
-Badge, Alert and Toast share `intent`: neutral, info, success, warning, danger. Each intent has text/bg/border/solid/on-solid tokens in both themes. Keep a meaningful text label. Warning and danger toasts persist unless an explicit timeout is supplied.
-
-Motion defaults: hover 120 ms, floating entry 160 ms, dialog 200 ms, sheet 240 ms, overlay exit 140 ms. Reduced motion suppresses animations. Set `data-coal-density="compact"` on html for compact controls, including portals. Button supports `loading` without losing its label.
-
-See `/docs/foundations` for live examples and rules covering typography, color, status, motion, forms and feedback.
+See the [accessibility audit](docs/accessibility-audit.md) for scope, corrections, verification commands and remaining manual checks. Run `npm run test:a11y` against the local production preview. Automated checks target WCAG 2.2 A/AA and do not establish complete conformance.

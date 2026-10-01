@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import { DisclosureContent } from "./disclosure-content.js";
 import {
   Action,
   cn,
@@ -50,10 +51,10 @@ export function CollapsibleContent({
 }: React.ComponentPropsWithRef<"div">) {
   const c = useRequired(Context, "CollapsibleContent");
   return (
-    <div
+    <DisclosureContent
       {...props}
       id={c.id}
-      hidden={!c.open}
+      open={c.open}
       className={cn("coal-collapsible-content", className)}
     />
   );

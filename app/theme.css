@@ -1,74 +1,28 @@
-/* coal.ui — Chlohal signature theme
-   Warm hue-75 OKLCH neutrals. Primary = deep warm charcoal.
-   Swap this entire file to re-theme any project using @chlohal/theme. */
-
+/* The documentation consumes the same cool palette as the installed library. */
 @layer base {
   :root {
-    --background: oklch(99% 0.004 75);
-    --foreground: oklch(14% 0.01 75);
-
-    --card: oklch(99% 0.004 75);
-    --card-foreground: oklch(14% 0.01 75);
-
-    --popover: oklch(99% 0.004 75);
-    --popover-foreground: oklch(14% 0.01 75);
-
-    --primary: oklch(22% 0.012 75);
-    --primary-foreground: oklch(98% 0.003 75);
-
-    --secondary: oklch(93.5% 0.008 75);
-    --secondary-foreground: oklch(22% 0.012 75);
-
-    --muted: oklch(93.5% 0.008 75);
-    --muted-foreground: oklch(48% 0.014 75);
-
-    --accent: oklch(93.5% 0.008 75);
-    --accent-foreground: oklch(22% 0.012 75);
-
-    --destructive: oklch(55% 0.24 29);
-    --destructive-foreground: oklch(98% 0.003 0);
-
-    --border: oklch(87.5% 0.01 75);
-    --input: oklch(87.5% 0.01 75);
-    --ring: oklch(22% 0.012 75);
-
-    --brand: oklch(68% 0.2 55);
-    --brand-foreground: oklch(14% 0.01 75);
-
-    --radius: 0rem;
-  }
-
-  .dark {
-    --background: oklch(12% 0.01 75);
-    --foreground: oklch(95% 0.004 75);
-
-    --card: oklch(15% 0.01 75);
-    --card-foreground: oklch(95% 0.004 75);
-
-    --popover: oklch(15% 0.01 75);
-    --popover-foreground: oklch(95% 0.004 75);
-
-    --primary: oklch(92% 0.005 75);
-    --primary-foreground: oklch(14% 0.01 75);
-
-    --secondary: oklch(21% 0.012 75);
-    --secondary-foreground: oklch(92% 0.005 75);
-
-    --muted: oklch(21% 0.012 75);
-    --muted-foreground: oklch(63% 0.014 75);
-
-    --accent: oklch(21% 0.012 75);
-    --accent-foreground: oklch(92% 0.005 75);
-
-    --destructive: oklch(45% 0.2 29);
-    --destructive-foreground: oklch(98% 0.003 0);
-
-    --border: oklch(22% 0.014 75);
-    --input: oklch(22% 0.014 75);
-    --ring: oklch(75% 0.01 75);
-
-    --brand: oklch(72% 0.2 55);
-    --brand-foreground: oklch(14% 0.01 75);
+    --background: var(--coal-bg);
+    --foreground: var(--coal-fg);
+    --card: var(--coal-bg);
+    --card-foreground: var(--coal-fg);
+    --popover: var(--coal-bg);
+    --popover-foreground: var(--coal-fg);
+    --primary: var(--coal-primary);
+    --primary-foreground: var(--coal-on-primary);
+    --secondary: var(--coal-surface);
+    --secondary-foreground: var(--coal-fg);
+    --muted: var(--coal-surface);
+    --muted-foreground: var(--coal-muted);
+    --accent: var(--coal-surface);
+    --accent-foreground: var(--coal-fg);
+    --destructive: var(--coal-danger);
+    --destructive-foreground: var(--coal-bg);
+    --border: var(--coal-border);
+    --input: var(--coal-border);
+    --ring: var(--coal-focus);
+    --brand: var(--coal-brand);
+    --brand-foreground: var(--coal-on-primary);
+    --radius: var(--coal-radius-control);
   }
 }
 
@@ -94,8 +48,8 @@
   --color-ring: var(--ring);
   --color-brand: var(--brand);
   --color-brand-foreground: var(--brand-foreground);
-  --radius-sm: 0px;
-  --radius-md: 0px;
+  --radius-sm: var(--coal-radius-small);
+  --radius-md: var(--coal-radius-control);
   --radius-lg: var(--radius);
-  --radius-xl: 0px;
+  --radius-xl: var(--coal-radius-floating);
 }

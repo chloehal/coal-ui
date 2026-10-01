@@ -20,6 +20,9 @@ type State = {
   set: (v: string) => void;
   items: Record<string, React.ReactNode>;
   disabled?: boolean;
+  required?: boolean;
+  invalid: boolean;
+  setInvalid: (value: boolean) => void;
 };
 const Context = React.createContext<State | undefined>(undefined);
 export type SelectProps = {
@@ -43,8 +46,22 @@ export function Select({
   required,
 }: SelectProps) {
   const [v, set] = useValue(value, defaultValue, onValueChange);
+  const [invalid, setInvalid] = React.useState(false);
   return (
-    <Context.Provider value={{ value: v, set, items, disabled }}>
+    <Context.Provider
+      value={{
+        value: v,
+        set: (next) => {
+          set(next);
+          setInvalid(false);
+        },
+        items,
+        disabled,
+        required,
+        invalid,
+        setInvalid,
+      }}
+    >
       <FloatingRoot>
         <SelectFormValue name={name} required={required} />
         {children}
@@ -73,6 +90,7 @@ function SelectFormValue({
       onChange={(e) => c.set(e.target.value)}
       onInvalid={(e) => {
         e.preventDefault();
+        c.setInvalid(true);
         f.anchor.current?.focus();
         f.set(true);
       }}
@@ -94,6 +112,8 @@ export function SelectTrigger({ className, ...props }: ActionProps) {
     <FloatingTrigger
       role="combobox"
       aria-haspopup="listbox"
+      aria-required={c.required || undefined}
+      aria-invalid={c.invalid || undefined}
       disabled={c.disabled}
       className={cn("coal-select-trigger", className)}
       {...props}

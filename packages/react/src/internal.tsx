@@ -112,3 +112,28 @@ export function moveFocus(
         : (i + (e.key === forward ? 1 : -1) + list.length) % list.length
   ].focus();
 }
+
+/** Keep custom pickers on the input's real change event and form value. */
+export function setInputValue(input: HTMLInputElement | null, value: string) {
+  if (!input) return;
+  Object.getOwnPropertyDescriptor(
+    HTMLInputElement.prototype,
+    "value",
+  )?.set?.call(input, value);
+  input.dispatchEvent(new Event("input", { bubbles: true }));
+}
+
+export function useFormReset<T extends HTMLInputElement | HTMLSelectElement>(
+  ref: React.RefObject<T | null>,
+  reset: () => void,
+) {
+  React.useEffect(() => {
+    const form = ref.current?.form;
+    const handle = (event: Event) =>
+      queueMicrotask(() => {
+        if (!event.defaultPrevented) reset();
+      });
+    form?.addEventListener("reset", handle);
+    return () => form?.removeEventListener("reset", handle);
+  }, [ref, reset]);
+}

@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import { DisclosureContent } from "./disclosure-content.js";
 import {
   Action,
   cn,
@@ -119,12 +120,12 @@ export function AccordionContent({
 }: React.ComponentPropsWithRef<"div">) {
   const c = useRequired(Item, "AccordionContent");
   return (
-    <div
+    <DisclosureContent
       {...props}
       id={`${c.id}-panel`}
       role="region"
       aria-labelledby={`${c.id}-trigger`}
-      hidden={!c.open}
+      open={c.open}
       className={cn("coal-accordion-content", className)}
     />
   );

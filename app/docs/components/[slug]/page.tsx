@@ -59,7 +59,7 @@ export default async function ComponentPage({
         <span>Terminal · local package</span>
         <CopyButton text={command} />
       </div>
-      <pre>
+      <pre tabIndex={0}>
         <code>{command}</code>
       </pre>
       <p className="mt-3 text-muted-foreground">
@@ -74,7 +74,7 @@ export default async function ComponentPage({
         <span>example.tsx</span>
         <CopyButton text={example} />
       </div>
-      <pre>
+      <pre tabIndex={0}>
         <code>{example}</code>
       </pre>
       <h2>Source</h2>
@@ -86,7 +86,7 @@ export default async function ComponentPage({
         <span>packages/react/src/{item.name}.tsx</span>
         <CopyButton text={source} />
       </div>
-      <pre>
+      <pre tabIndex={0}>
         <code>{source}</code>
       </pre>
       <h2>Accessibility checklist</h2>

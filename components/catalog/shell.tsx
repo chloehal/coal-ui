@@ -1,4 +1,5 @@
 "use client";
+import { PixelMark, PixelClickFeedback } from "@chlohal/coal-ui";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import * as React from "react";
@@ -12,6 +13,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const [mobile, setMobile] = React.useState(false);
   const [search, setSearch] = React.useState("");
   const input = React.useRef<HTMLInputElement>(null);
+  const menuButton = React.useRef<HTMLButtonElement>(null);
   React.useEffect(() => {
     try {
       const next = localStorage.getItem("coal-theme") === "dark";
@@ -24,7 +26,6 @@ export function Shell({ children }: { children: React.ReactNode }) {
         setMobile(true);
         input.current?.focus();
       }
-      if (e.key === "Escape") setMobile(false);
     };
     window.addEventListener("keydown", listener);
     return () => window.removeEventListener("keydown", listener);
@@ -43,12 +44,13 @@ export function Shell({ children }: { children: React.ReactNode }) {
   }
   return (
     <>
+      <PixelClickFeedback />
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
       <header className="site-header">
         <Link href="/" className="wordmark" aria-label="coal.ui home">
-          <span className="coal-mark" />
+          <PixelMark size={32} variant="seed" className="brand-pixels" />
           coal<span className="text-muted-foreground">.ui</span>
         </Link>
         <nav aria-label="Main navigation" className="header-nav">
@@ -85,6 +87,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
             variant="ghost"
             size="icon"
             className="mobile-menu"
+            ref={menuButton}
+            aria-controls="component-navigation"
             aria-label={mobile ? "Close navigation" : "Open navigation"}
             aria-expanded={mobile}
             onClick={() => setMobile(!mobile)}
@@ -95,6 +99,23 @@ export function Shell({ children }: { children: React.ReactNode }) {
       </header>
       <div className="site-layout">
         <aside
+          id="component-navigation"
+          onKeyDown={(e) => {
+            if (mobile && e.key === "Escape" && !e.defaultPrevented) {
+              e.preventDefault();
+              setMobile(false);
+              menuButton.current?.focus();
+            }
+          }}
+          onBlurCapture={(e) => {
+            if (
+              mobile &&
+              e.relatedTarget instanceof Node &&
+              !e.currentTarget.contains(e.relatedTarget) &&
+              e.relatedTarget !== menuButton.current
+            )
+              setMobile(false);
+          }}
           className={"sidebar " + (mobile ? "sidebar-open" : "")}
           aria-label="Component navigation"
         >
@@ -143,6 +164,11 @@ export function Shell({ children }: { children: React.ReactNode }) {
                       className={
                         "side-link " +
                         (path.endsWith("/" + item.name) ? "selected" : "")
+                      }
+                      aria-current={
+                        path === "/docs/components/" + item.name
+                          ? "page"
+                          : undefined
                       }
                       href={"/docs/components/" + item.name}
                     >

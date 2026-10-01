@@ -1,3 +1,4 @@
+export const metadata = { title: "Installation — coal.ui" };
 import Link from "next/link";
 import { CopyButton } from "@/components/catalog/copy-button";
 export default function Installation() {
@@ -26,7 +27,7 @@ export default function Installation() {
         <span>Terminal</span>
         <CopyButton text={command} />
       </div>
-      <pre>
+      <pre tabIndex={0}>
         <code>{command}</code>
       </pre>
       <p className="mt-4">
@@ -47,7 +48,7 @@ export default function Installation() {
       <p>
         In your React application entry point, or app/layout.tsx in Next.js:
       </p>
-      <pre>
+      <pre tabIndex={0}>
         <code>{'import "@chlohal/coal-ui/styles.css";'}</code>
       </pre>
       <p className="mt-3">
@@ -56,7 +57,7 @@ export default function Installation() {
         layout and typography.
       </p>
       <h2>3. Build something</h2>
-      <pre>
+      <pre tabIndex={0}>
         <code>
           {
             'import { Button, Input, Label } from "@chlohal/coal-ui";\n\nexport function ContactForm() {\n  return (\n    <form style={{ display: "grid", gap: 12, maxWidth: 320 }}>\n      <Label htmlFor="email">Email address</Label>\n      <Input id="email" name="email" type="email" required />\n      <Button type="submit">Continue</Button>\n    </form>\n  );\n}'
@@ -64,13 +65,13 @@ export default function Installation() {
         </code>
       </pre>
       <h2>Optional local typography</h2>
-      <pre>
+      <pre tabIndex={0}>
         <code>
           {'import "@chlohal/coal-ui/fonts.css"; // after styles.css'}
         </code>
       </pre>
       <p>
-        IBM Plex Sans and Mono are bundled locally with their licenses. Use
+        Manrope and DM Mono are bundled locally with their licenses. Use
         var(--coal-font-sans) for your application text. See{" "}
         <a className="text-link" href="/docs/foundations">
           Foundations
@@ -83,7 +84,10 @@ export default function Installation() {
           55 components, named ES module exports and TypeScript declarations.
         </li>
         <li>Original React implementations and native browser controls.</li>
-        <li>One stylesheet with square corners and charcoal/copper tokens.</li>
+        <li>
+          One stylesheet with crisp structure, soft controls and cool mauve
+          tokens.
+        </li>
         <li>No runtime dependencies except React and React DOM peers.</li>
       </ul>
       <h2>Overlays and notifications</h2>
@@ -94,7 +98,7 @@ export default function Installation() {
         always have a visible label.
       </p>
       <h2>Development and distribution</h2>
-      <pre>
+      <pre tabIndex={0}>
         <code>
           {
             "npm ci\nnpm run package:build\nnpm run dev -- --port 3100\n\n# Build package, examples and documentation\nnpm run build"

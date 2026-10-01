@@ -1,7 +1,7 @@
 {
   "name": "coal-ui",
   "version": "0.5.0",
-  "description": "Coal \u2014 independent React components and documentation",
+  "description": "Coal — independent React components and documentation",
   "license": "MIT",
   "homepage": "https://ui.chlohal.com",
   "scripts": {
@@ -16,7 +16,8 @@
     "test:browser": "playwright test",
     "format": "prettier --write app components packages/react/src lib scripts tests playwright.config.ts",
     "package:build": "node scripts/build-package.mjs",
-    "smoke:build": "node scripts/build-smoke.mjs"
+    "smoke:build": "node scripts/build-smoke.mjs",
+    "test:a11y": "playwright test -c playwright.accessibility.config.ts"
   },
   "dependencies": {
     "@chlohal/coal-ui": "file:packages/react",
@@ -28,6 +29,7 @@
     "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@eslint/eslintrc": "^3.3.1",
     "@playwright/test": "^1.58.2",
     "@tailwindcss/postcss": "^4.1.11",

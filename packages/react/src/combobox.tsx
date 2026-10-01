@@ -101,7 +101,7 @@ export function ComboboxInput({
       role="combobox"
       aria-autocomplete="list"
       aria-expanded={f.open}
-      aria-controls={f.id}
+      aria-controls={f.open ? f.id : undefined}
       aria-activedescendant={
         f.open && c.active >= 0 ? `${c.id}-option-${c.active}` : undefined
       }

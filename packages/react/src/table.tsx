@@ -5,7 +5,7 @@ export function Table({
   ...props
 }: React.ComponentPropsWithRef<"table">) {
   return (
-    <div className="coal-table-scroll">
+    <div className="coal-table-scroll" tabIndex={0}>
       <table className={cn("coal-table", className)} {...props} />
     </div>
   );

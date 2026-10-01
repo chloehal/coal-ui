@@ -55,3 +55,6 @@ export * from "./attachment.js";
 export * from "./command.js";
 export * from "./data-table.js";
 export type { Intent } from "./intent.js";
+
+export * from "./pixel-mark.js";
+export * from "./pixel-click-feedback.js";

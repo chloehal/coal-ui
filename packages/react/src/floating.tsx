@@ -64,9 +64,18 @@ export function FloatingRoot({
       )
         set(false);
     };
+    const escape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape" || event.defaultPrevented) return;
+      event.preventDefault();
+      close(!!content.current?.contains(document.activeElement));
+    };
     document.addEventListener("pointerdown", outside);
-    return () => document.removeEventListener("pointerdown", outside);
-  }, [v, set]);
+    document.addEventListener("keydown", escape);
+    return () => {
+      document.removeEventListener("pointerdown", outside);
+      document.removeEventListener("keydown", escape);
+    };
+  }, [v, set, close]);
   return (
     <Context.Provider
       value={{
@@ -101,7 +110,7 @@ export function FloatingTrigger({
       }}
       aria-haspopup={props["aria-haspopup"] ?? "dialog"}
       aria-expanded={c.open}
-      aria-controls={c.id}
+      aria-controls={c.open ? c.id : undefined}
       onClick={(e) => {
         onClick?.(e);
         if (!e.defaultPrevented) c.set(!c.open);
@@ -155,6 +164,7 @@ export function FloatingContent({
         left: Math.max(12, Math.min(a.left, innerWidth - p.width - 12)),
         maxHeight,
         "--coal-anchor-width": `${a.width}px`,
+        "--coal-transform-origin": top < a.top ? "bottom left" : "top left",
       } as React.CSSProperties);
     };
     place();
@@ -215,6 +225,6 @@ export function FloatingContent({
     >
       {children}
     </div>,
-    c.anchor.current?.closest("dialog") ?? document.body,
+    c.anchor.current?.closest('dialog, main, [role="main"]') ?? document.body,
   );
 }

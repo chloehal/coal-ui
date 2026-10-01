@@ -1,4 +1,5 @@
 "use client";
+import { LoadingGlyph } from "./loading-glyph.js";
 import { Action, cn, type ActionProps } from "./internal.js";
 export type ButtonProps = ActionProps & {
   loading?: boolean;
@@ -43,7 +44,9 @@ export function Button({
     >
       {loading ? (
         <>
-          <span className="coal-button-loading" aria-hidden="true" />
+          <span className="coal-button-loading" aria-hidden="true">
+            <LoadingGlyph />
+          </span>
           {children ??
             (
               props.render?.props as
